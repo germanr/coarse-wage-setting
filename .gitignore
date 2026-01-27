@@ -1,0 +1,76 @@
+# Stata
+*.log
+*.smcl
+*.sthlp
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.toc
+*.synctex.gz
+*.synctex(busy)
+*.nav
+*.snm
+*.vrb
+
+# PDF output (keep source, not compiled)
+paper/*.pdf
+
+# Backup and temp files
+*~
+*.bak
+*.tmp
+._*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Dropbox conflicts
+*conflicted copy*
+
+# Large/confidential data (not for GitHub)
+raw_data/
+
+# Old code versions
+code/old-codes/
+code/other-codes/
+
+# Old paper files
+paper/old-drafts/
+paper/old-presentations/
+paper/memos/
+paper/referee-reports/
+paper/restat-package/
+
+# Archive/scratch folder
+the_box/
+
+# Old results versions
+results/fall-2020/
+results/fall-2021/
+results/fall-2022/
+results/fall-2023/
+results/spr-2022/
+
+# Backup folder
+_backup_*/
+
+# Windows artifacts
+nul
+
+# Shortcut files
+*.lnk
