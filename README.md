@@ -85,7 +85,7 @@ do "code/0-master.do"
 - Wage distribution histograms
 - Bunching estimates
 - Firm outcome regressions
-- Event study figures
+- Robustness checks
 
 ## Citation
 
