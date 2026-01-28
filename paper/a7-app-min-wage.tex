@@ -1,0 +1,73 @@
+\clearpage 
+\section{Changes in the Minimum Wage and Coarse Wage-Setting} \label{app:min-wage} 
+
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{equation}{0}	
+\renewcommand{\thetable}{G\arabic{table}}
+\renewcommand{\thefigure}{G\arabic{figure}}
+\renewcommand{\theequation}{G\arabic{equation}}
+
+
+In this Appendix, I study how coarse wage-setting interacts with changes in the minimum wage (MW). \cite{dube_monopsony_2020} note that whenever a minimum wage is equal to a round number, two types of firms hire at the minimum wage: those that are constrained by the wage floor and those that are misoptimizing with respect to wages and pay the minimum wage because it is a round number. An increase in the minimum wage affects both types of firms and possibly causes the second type of firm to fully optimize wages. A similar logic follows for firms that pay a round-numbered wage below the new minimum wage.
+
+I observe hiring decisions under fifteen different federal minimum wages, seven of which are round numbers (see Appendix Table \ref{tab_min_wages}). I also observe the year $t+1$ salary of workers hired in year $t$. Thus, to shed light on this potential spillover effect, I analyze the fraction of workers who earn a non-round salary in year $t+1$ as a function of the salary at which they were hired.
+
+Table \ref{tab_mw_spillover} summarizes all possible wage transitions. Panel A shows the transitions for workers that were hired at the minimum wage, $w_t =$ MW$_t$; Panel B for workers hired at a wage above the minimum wage, but below the minimum wage of the following year, $w_{t} \in ($MW$_t,$ MW$_{t+1})$; and Panel C for workers hired at a wage above the year $t+1$ minimum wage, $w_{t} \geq $MW$_{t+1}$. By construction, only workers in Panels A and B are directly affected by the change in the minimum wage between year $t$ and year $t+1$. Hence, the transitions in Panel C are useful as a comparison group to assess how different types of wages tend to change irrespective of the direct effect due to a change in the minimum wage.
+
+For conciseness, I focus on how a change in the minimum wage affects the round salaries that it crosses. Panel B shows that 47.7\% of the workers hired at a round salary between MW$_t$ and MW$_{t+1}$ in year $t$ earn a non-round salary in year $t+1$ (excluding the new minimum wage). One way to benchmark this magnitude is to compare it to the fraction of workers hired at a round salary \textit{above} MW$_{t+1}$ who earn a non-round salary the following year (excluding the new minimum wage). This figure equals 42.3\%. This benchmark can be thought of as the counterfactual fraction of workers that would earn a non-coarse wage in year $t+1$ had the minimum wage not changed. Comparing these two transitions following a ``differences-in-differences'' approach, suggests that a change in the minimum wage decreases the share of coarse wages by 5.4 percentage points (or 11.3\%). 
+
+An alternative comparison group is the fraction of workers hired at a non-round salary above MW$_{t+1}$ who also earn a non-round salary in year $t+1$. This figure is akin to the likelihood that a firm that optimized salaries in year $t$ also optimizes in year $t+1$. Since this benchmark uses firms that fully optimized wages in the first period, it can be thought of as an upper bound for firms that initially paid coarse wages. The second row of Panel C show that this figure is 88.3\% (column 6). The increase in the minimum wage achieves 54.0\% (= 47.7\%/88.3\%) of this benchmark.
+
+These findings suggest that changes in the minimum wage can have sizable spillover effects on firm wage-setting behavior.
+
+\begin{table}[H]{\footnotesize
+		\begin{center}
+			\caption{Federal minimum wages in Brazil: 2003--2017} \label{tab_min_wages}
+			\newcommand\w{2}
+			\begin{tabular}{rcc}
+				\midrule
+				& \multicolumn{2}{c}{Federal minimum wage } \\
+				\cmidrule{2-3}      & In nominal terms & In real terms \\
+				& (current R\$) &  (2003 R\$) \\
+				\midrule
+				
+				\ExpandableInput{../results/mw_fed.tex} \midrule
+			\end{tabular}
+		\end{center}
+		\begin{singlespace} \vspace{-.5cm}
+			\noindent \justify \textit{Notes:} This table indicates the federal minimum monthly salary in R\$ at the end of each calendar year. \textbf{Bolded} figures indicate minimum wages that are round numbers.
+		\end{singlespace}
+	}
+\end{table}
+
+\clearpage 
+\begin{landscape}
+	\begin{table}[H]{\footnotesize
+			\begin{center}
+				\caption{Fraction of workers earning a round salary in year $t+1$ as a function of their initial salary} \label{tab_mw_spillover}
+				\begin{tabular}{lcccccc}
+					\midrule
+					&   & \multicolumn{5}{c}{Fraction of workers in year $t+1$ earning:} \\	\cmidrule{3-7}  
+					& Fraction of & The new min. & A round  & A non-round &  A round salary   &  A non-round salary   \\
+					&  workers in $t$  &  wage (MW$_{t+1}$) &  salary  &  salary  & excluding MW$_{t+1}$ & excluding MW$_{t+1}$ \\
+					& (1) & (2) & (3) & (4) & (5) & (6) \\
+					\midrule
+					\multicolumn{7}{l}{\textbf{\hspace{-1em}Panel A. Workers hired at $w_{t}$ = MW$_t$}} \\  
+					\ExpandableInput{../results/mw_spil_a.tex} \midrule					  
+					\multicolumn{7}{l}{\textbf{\hspace{-1em}Panel B. Workers hired at $w_{t} \in ($MW$_t,$ MW$_{t+1})$}}         \\
+					\ExpandableInput{../results/mw_spil_b.tex} \midrule					  
+					\multicolumn{4}{l}{\textbf{\hspace{-1em}Panel C. Workers hired at $w_{t} \geq$  MW$_{t+1}$}} &   &   &  \\
+					\ExpandableInput{../results/mw_spil_c.tex} \midrule					  
+				\end{tabular}
+			\end{center}
+			\begin{singlespace} \vspace{-.5cm}
+				\noindent \justify \textit{Notes:} This table shows worker transitions between different types of salaries. The rows in each panel indicate the salary at which the firm hired the worker. Panel A includes workers hired at the federal minimum wage. Panel B includes workers hired at a salary above the federal minimum wage of the hiring year (year $t$) but below the federal minimum wage of the following year ($t+1$). Panel C includes workers hired at a salary above the year $t+1$ federal minimum wage. Workers that appear to be hired at a salary below the minimum wage are excluded. I present the transitions separately for workers hired at a round salary (first row of each panel) and a non-round salary (second row of each panel). In Panel A, this is equivalent to splitting the sample based on whether the federal minimum wage is a round number.
+				
+				Column 1 shows the fraction of workers hired at each type of salary. The sum of the rows in column 1 equals one. The subsequent columns indicate the salary earned by the worker in year $t+1$. Column 2 shows the fraction of workers that earn the $t+1$ federal minimum wage. Columns 3 and 5 show the fraction of workers that earn a round salary in $t+1$. In column 5, this fraction is calculated using salaries different from the new minimum wage (only relevant for years in which the new minimum wage is a round salary, see Appendix Table \ref{tab_min_wages}). Columns 4 and 6 show the fraction of workers that do not earn a round salary in $t+1$. In column 6, this figure is calculated using salaries different from the new minimum wage (only relevant for years in which the new minimum wage is not a round salary). Columns 2, 5, and 6 add up to one. Similarly, columns 3 and 4 also add up to one. 
+			\end{singlespace}
+		}
+	\end{table}
+	
+\end{landscape}
+

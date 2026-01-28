@@ -1,0 +1,193 @@
+\clearpage 
+\section{Empirical Appendix} \label{app:add-results} 
+
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{equation}{0}	
+\renewcommand{\thetable}{B\arabic{table}}
+\renewcommand{\thefigure}{B\arabic{figure}}
+\renewcommand{\theequation}{B\arabic{equation}}
+
+\subsection{Informality in Brazilian Labor Markets} \label{app:inform}
+
+International organizations define informality in two main ways. Under the \textit{legal} definition, a worker is considered to be employed by the informal sector if she does not have the right to a pension when retired. Under the \textit{productive} definition, a worker is considered informal if (i) she is a salaried worker in a small firm (i.e., a firm that employs fewer than five workers), (ii) a non-professional self-employed, or (iii) a zero-income worker. The share of informal-sector workers in Brazil during 2013 was 35.9\% under the legal definition and 43.7\% according to the productive definition. Table \ref{tab_rais_pnad} shows summary statistics on workers in the national household survey (PNAD), which includes information on workers employed in the informal sector.
+
+\begin{table}[H]
+	\centering
+	\caption{Summary statistics of workers in the RAIS and the PNAD during 2013} \label{tab_rais_pnad}
+	\resizebox{1\textwidth}{!}{
+		\begin{tabular}{lccccccccc}
+			\midrule
+			& RAIS &   & \multicolumn{7}{c}{Household Survey (PNAD)} \\
+			\cmidrule{2-2}\cmidrule{4-10}      & \multicolumn{1}{c}{\multirow{2}[4]{*}{All workers}} &   & \multicolumn{1}{c}{\multirow{2}[4]{*}{All workers}} &   & \multicolumn{2}{c}{Legal definition} &   & \multicolumn{2}{c}{Productive definition} \\
+			\cmidrule{6-7}\cmidrule{9-10}      &   &   &   &   & Formal & Informal &   & Formal & Informal \\
+			\cmidrule{2-10}      & (1) &   & (2) &   & (3) & (4) &   & (5) & (6) \\
+			\midrule
+			
+			\textbf{\hspace{-1em} Panel A. Workers' characteristics} &   &   &   &   &   &   &   &   &  \\
+			\ExpandableInput{../results/pnad-char}  \midrule
+						
+
+			\textbf{\hspace{-1em} Panel B. Earnings} &   &   &   &   &   &   &   &   &  \\
+			\ExpandableInput{../results/pnad-earnings}  \midrule
+
+			\textbf{\hspace{-1em} Panel C. Industry} &   &   &   &   &   &   &   &   &  \\
+			\ExpandableInput{../results/pnad-industry}  \midrule
+
+			\textbf{\hspace{-1em} Panel D. Region} &   &   &   &   &   &   &   &   &  \\
+			\ExpandableInput{../results/pnad-region}  \midrule
+
+			\ExpandableInput{../results/pnad-n}  \midrule
+
+		\end{tabular}
+	}
+	\begin{minipage}{\textwidth}  \vspace{0cm}
+		\scriptsize\rule{0cm}{0cm} \noindent \textit{Notes:} This table shows summary statistics of workers in the \textit{Relação Anual de Informações Sociais} (RAIS) and the \textit{Pesquisa Nacional por Amostra de Domicílios} (PNAD), both during 2013. I restrict the PNAD sample to employed individuals aged 18--65. This excludes individuals out of the labor force and unemployed.
+	\end{minipage}
+	
+\end{table}
+
+Workers in the RAIS (column 1) are slightly younger, more educated, more likely to live in the Southeast (the wealthiest region), have higher earnings, and are significantly less likely to work in the primary sector than workers in the PNAD (column 2). Workers in the RAIS resemble workers in the formal sector of the PNAD (columns 3 and 5). As noted above, this is because informal-sector workers are not included in the RAIS. 
+
+\subsection{Additional Outcomes of Bunching Firms} \label{app:outcomes}
+
+In this Appendix, I study additional outcomes of firms that only hired workers at round numbers in my sample (``bunching firms''). As in the main text, to analyze worker separation likelihood (Appendix Tables \ref{reg_firm_performance2} and \ref{reg_firm_performance3}), I estimate the regressions at the worker-by-firm-by-year level. To analyze the firm growth (Appendix Tables \ref{reg_firm_performance4}), I estimate the regressions at the firm-by-year level (and exclude the worker controls). I cluster the standard errors at the firm level.
+
+\subsubsection{Worker Separation and Resignation Rates Over Time.}
+
+Appendix Table \ref{reg_firm_performance2} shows the separation and resignation rates of new workers hired by bunching firms over time. Each column shows the separation or resignation rate within $t$ years of a new hire joining a bunching firm. Columns 1 and 4 reproduce the one-year separation and resignation rates shown in the main text. In columns 2 and 5, the outcome equals one if the new hire separated/resigned within two years of joining the firm. Finally, in columns 3 and 6, the outcome equals one if the new hire separated/resigned within three years of joining the firm. 
+
+The higher separation and resignation rates of new workers hired by bunching firms persist over time. Within one year of joining the firm, new hires in bunching firms are 4.1 percentage points and 1.2 percentage points more likely to separate and resign than new hires in non-bunching firms ($p<0.01$). These figures represent increases of 11.6\% and 10.4\%, respectively, relative to the sample mean. The corresponding figures within two and three years of joining the firm are of a similar magnitude. For instance, new hires in bunching firms are 3.0 percentage points more likely to separate within two years and 1.9 percentage points more likely to separate within three years of joining the firm ($p<0.01$). These results are robust to excluding small firms (Panel B).
+
+
+\begin{table}[H]{\footnotesize
+		\begin{center}
+			\caption{Over-time worker separation rate of firms that tend to hire workers at round numbers} \label{reg_firm_performance2}
+			\newcommand\w{1.63}
+			\begin{tabular}{l@{}lR{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}}
+				\midrule
+				&& \multicolumn{12}{c}{Dependent variable: $=1$ if worker separated/resigned within $t$ years of joining the firm} \\ \cmidrule{3-14}
+				
+				&& \multicolumn{6}{c}{Separation rate} & \multicolumn{6}{c}{Resignation rate} \\ \cmidrule{3-7} \cmidrule{9-13}
+				
+				&& 1-year && 2-years && 3-years && 1-year && 2-years && 3-years \\
+				
+				&& (1) && (2) && (3) && (4) && (5) && (6)  \\
+				\midrule
+				\multicolumn{10}{l}{\hspace{-1em} \textbf{Panel A. All firms}}  \\
+				\ExpandableInput{../results/perf2_bunch_allf}  \midrule
+				
+				\multicolumn{6}{l}{\hspace{-1em} \textbf{Panel B. Firms with more than five workers}} \\
+				\ExpandableInput{../results/perf2_bunch_bigf.tex}  \midrule
+			\end{tabular}
+		\end{center}
+		\begin{singlespace}  \vspace{-.5cm}
+			\noindent \justify \textit{Notes:} This table displays estimates of $\beta$ from equation \eqref{reg:firm-outcomes}. Each column shows the result of a regression using the dependent variable listed in the column header. 
+			
+			In column 1, the outcome equals one if a new hire separated from the firm within one year of being hired, i.e., whether she separated during the year she was hired (year $t$) or the following year (year $t+1$), and zero otherwise. In column 2, the outcome equals one if a new hire separated from the firm within two years of being hired. In column 3, the outcome equals one if a new hire separated from the firm within three years of being hired. Columns 4--6 are defined analogously but using worker resignation likelihood instead of separation likelihood. 
+			
+			I use the firm random sample to estimate all regressions. See notes to Table \ref{reg_firm_performance} for the list of controls and variable definitions. Heteroskedasticity-robust standard errors clustered at the firm level in parentheses. $^{***}$, $^{**}$ and $^*$ denote significance at the 1\%, 5\% and 10\% levels.
+		\end{singlespace} 	
+	}
+\end{table}
+
+
+
+
+\subsubsection{The Separation and Resignation Rates of High-Skilled Workers.}
+
+Appendix Table \ref{reg_firm_performance3} shows the separation and resignation rates of new workers hired by bunching firms as a function of their educational attainment. I divide workers into those with a completed high-school degree (53.2\% of workers, see Table \ref{tab_rais_summ}), and those without a high-school degree (46.8\% of workers). For conciseness, I refer to these workers as ``high-skilled'' and ``low-skilled,'' respectively. Columns 1 and 3 show the one-year separation/resignation rates of high-skilled workers, while columns 2 and 4 show the corresponding rates for low-skilled workers. The coefficient on the high- and low-skilled workers adds up to the coefficient estimated on the regression for all workers.
+
+The higher separation and resignation rates of new workers hired by bunching firms tend to be driven by high-skilled new hires. Columns 1 and 3 show that high-skilled new hires in bunching firms are, on average, 2.9 percentage points (a 14.6\% increase relative to the sample mean) and 0.7 percentage points (or 7.6\%) more likely to separate and resign, respectively, than new high-skilled hires in non-bunching firms ($p<0.01$). The corresponding figures for low-skilled new hires are 1.2 percentage points and 0.4 percentage points (or 10.1\% and 8.6\%). These results are robust to excluding small firms (Panel B).
+
+
+\begin{table}[H]{\footnotesize
+		\begin{center}
+			\caption{Separation rates of new workers hired by bunching firms by worker skill level} \label{reg_firm_performance3}
+			\newcommand\w{2}
+			\begin{tabular}{l@{}lR{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}}
+				\midrule
+				&& \multicolumn{8}{c}{Dependent variable: =1 if the new hire separated within one year} \\ \cmidrule{3-10}
+				&& \multicolumn{4}{c}{Separation rate} & \multicolumn{4}{c}{Resignation rate} \\ \cmidrule{3-5} \cmidrule{7-9}				
+				&& High-skilled  && Low-skilled    && High-skilled  && Low-skilled  \\
+				&& workers && workers    && workers  && workers \\
+				&& (1) && (2) && (3) && (4)  \\
+				\midrule
+				\multicolumn{10}{l}{\hspace{-1em} \textbf{Panel A. All firms}}  \\
+				\ExpandableInput{../results/perf3_bunch_allf}  \midrule
+				
+				\multicolumn{6}{l}{\hspace{-1em} \textbf{Panel B. Firms with more than five workers}} \\
+				\ExpandableInput{../results/perf3_bunch_bigf.tex}  \midrule
+			\end{tabular}
+		\end{center}
+		\begin{singlespace}  \vspace{-.5cm}
+			\noindent \justify \textit{Notes:} This table displays estimates of $\beta$ from equation \eqref{reg:firm-outcomes}. Each column shows the result of a regression using the dependent variable listed in the column header. 
+			
+			In column 1, the outcome equals one if a new hire has a high-school degree and separated from the firm within one year of being hired, and zero otherwise. In column 2, the outcome equals one if a new hire does not have a high-school degree and separated from the firm within one year of being hired, and zero otherwise. Columns 3 and 4 are defined analogously but using worker resignation likelihood instead of separation likelihood. 
+			
+			I use the firm random sample to estimate all regressions. See notes to Table \ref{reg_firm_performance} for the list of controls and variable definitions. Heteroskedasticity-robust standard errors clustered at the firm level in parentheses. $^{***}$, $^{**}$ and $^*$ denote significance at the 1\%, 5\% and 10\% levels.
+		\end{singlespace} 	
+	}
+\end{table}
+
+
+
+\subsubsection{The Job Growth Rate of High-Skilled and Highly-Paid Workers.}
+
+Appendix Table \ref{reg_firm_performance4} shows the job growth rate of workers across the educational attainment distribution. As before, I divide workers into those with and without a high school degree. In addition, I divide workers into ``high-paid'' workers---defined as those whose average monthly salary is at or above the median monthly salary of all workers in the sample---and ``low-paid'' workers, analogously defined. Columns 1 and 2 show the growth rate in the firm's number of high- and low-skilled employees. Columns 3 and 4 show the growth rate in the firm's number of high- and low-paid employees. 
+
+Bunching firms have lower job growth rates for both high-skilled and low-skilled workers. Column 1 shows that bunching firms have a 4.0 percentage points lower high-skilled workers growth rate, on average, than non-bunching firms ($p<0.01$). The corresponding figure for low-skilled workers is 3.4 percentage points (column 2). Similarly, bunching firms have a 3.6 and 3.8 percentage points lower job growth rate of high- and low-paid workers, on average, than non-bunching firms (columns 3 and 4). The results are quantitatively smaller and not statistically different from zero for large firms (Panel B), indicating that these lower job growth rates are mainly driven by smaller firms.
+
+\begin{table}[H]{\footnotesize
+		\begin{center}
+			\caption{Job growth rate of firms that tend to hire workers at round numbers} \label{reg_firm_performance4}
+			\newcommand\w{2}
+			\begin{tabular}{l@{}lR{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}}
+				\midrule
+				&& \multicolumn{8}{c}{Dependent variable: Firm job growth rate} \\ \cmidrule{3-10}
+				&& High-skilled  && Low-skilled    && High-paid    && Low-paid  \\
+				&& workers && workers    && workers  && workers \\
+				&& (1) && (2) && (3) && (4)  \\
+				\midrule
+				\multicolumn{10}{l}{\hspace{-1em} \textbf{Panel A. All firms}}  \\
+				\ExpandableInput{../results/perf4_bunch_allf}  \midrule
+				
+				\multicolumn{6}{l}{\hspace{-1em} \textbf{Panel B. Firms with more than five workers}} \\
+				\ExpandableInput{../results/perf4_bunch_bigf.tex}  \midrule
+			\end{tabular}
+		\end{center}
+		\begin{singlespace}  \vspace{-.5cm}
+			\noindent \justify \textit{Notes:} This table displays estimates of $\beta$ from equation \eqref{reg:firm-outcomes}. Each column shows the result of a regression using the dependent variable listed in the column header. 
+			
+			The dependent variable is the percent change in the number of workers employed between consecutive years. Each column shows the growth rate of workers with different observable characteristics. In column 1, I compute the growth rate of workers with a high-school degree; in column 2, without a high-school degree; in column 3, with a monthly salary at or above the median in the sample; and in column 4, with a monthly salary below the median in the sample.
+			
+			I use the firm random sample to estimate all regressions. See notes to Table \ref{reg_firm_performance} for the list of controls and variable definitions. Heteroskedasticity-robust standard errors clustered at the firm level in parentheses. $^{***}$, $^{**}$ and $^*$ denote significance at the 1\%, 5\% and 10\% levels.
+		\end{singlespace} 	
+	}
+\end{table}
+
+
+%
+%\subsection{A Potential-Outcomes Framework to Interpret the Reduced-Form Results} \label{app:pot-out}
+%
+%In this Appendix, I present a simple potential-outcomes framework to organize the empirical results presented in Section \ref{sec:firm-behavior}.
+%
+%Let $Y_j$ be an outcome of firm $j$ (e.g., profits) and let $B_j \in \{0, 1\}$ denote an indicator for hiring workers only at round-numbered wages. The observed outcome of a firm can be written as
+%%
+%\begin{align}
+%	Y_j = Y_{0,j} + (Y_{1,j} - Y_{0,j})B_j,
+%\end{align}
+%%
+%where $Y_{0,j}$ and $Y_{1,j}$ are firm $j$'s potential outcomes. $Y_{0,j}$ is the firm's outcome had it not paid round-numbered wages, regardless of the wages it actually paid; and $Y_{1,j}$ is the firm's outcome if it pays  round-numbered wages. 
+%
+%The observed difference in mean outcomes between firms that pay round-numbered wages (``bunching firms'') and non-bunching firms can be decomposed into two terms as follows:
+%%
+%\begin{align} \label{eq:pot-out-decomp}
+%	\E[Y_j | B_j = 1] - \E[Y_j | B_j = 0] &= \underbrace{\left(\E[Y_{1,j} | B_j = 1] -  \E[Y_{0,j} | B_j = 1]\right)}_{\text{Term 1: Causal effect}} \notag \\ &+ \underbrace{\left(\E[Y_{0,j} | B_j = 1] -  \E[Y_{0,j} | B_j = 0]\right)}_{\text{Term 2: Selection bias}}.
+%\end{align}
+%
+%The first term in the right-hand-side of equation \eqref{eq:pot-out-decomp}, $\E[Y_{1,j} | B_j = 1] -  \E[Y_{0,j} | B_j = 1]$, represents the causal effect of paying a round-numbered wage for bunching firms. If bunching firms pay new hires a round-numbered wage to exploit a worker bias, we would expect this term to be positive, meaning that exploiting a bias would lead bunching firms to have better outcomes. Conversely, if bunching firms are misoptimizing and doing so is costly, the causal effect would be negative. 
+%
+%The second term, $\E[Y_{0,j} | B_j = 1] -  \E[Y_{0,j} | B_j = 0]$, represents the selection bias. This term captures possible differences in average outcomes between bunching and non-bunching firms, when both types of firms offer non-round-numbered wages. What sign should we expect for the selection bias? Recognizing the existence of a worker bias and implementing a pricing strategy that exploits this bias demonstrates high sophistication. Typically, more sophisticated firms have better outcomes than less sophisticated firms. This can be attributed to, for instance, more effective management practices, which leads to better outcomes \citep{bloom2013does}. Consequently, if bunching firms are paying a round-numbered wage to exploit a worker bias, we should expect the selection bias to be positive.
+%
+%In Section \ref{sec:firm-behavior}, I show that---conditional on a large set of covariates---bunching firms experience worse outcomes than non-bunching firms. This means that the sum of the causal effect and the selection bias is negative. Thus, at least one of the two terms must be negative. If the causal effect is negative, bunching firms are misoptimizing. If the causal effect is non-negative, it follows that the selection bias is negative. But this contradicts the idea that bunching firms are offering round wages because they are sophisticated enough to exploit a worker bias. Thus, the results indicate that the wage-setting strategy of bunching firms is not driven by these firms trying to exploit a worker bias.

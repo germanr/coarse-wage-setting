@@ -1,0 +1,153 @@
+\clearpage 
+\section{Data Appendix} \label{app:data} 
+
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\renewcommand{\thetable}{D\arabic{table}}
+\renewcommand{\thefigure}{D\arabic{figure}}
+
+\subsection{Worker Record Booklet and RAIS Orientation Handbook} \label{app:handbook} 
+
+The main variable in the analysis is the contracted salary of each new hire. The contracted salary is the salary contained in the worker record booklet (CTPS). The CTPS lists the employment record of all workers employed in the formal sector and includes information on the worker's admission date, initial salary, and salary increases. Appendix Figure \ref{fig_ctps} shows an example of a worker record booklet and the information contained in it.
+
+\begin{figure}[h!]
+	\caption{Example of a worker record booklet or CTPS}\label{fig_ctps}
+	\centering
+	\includegraphics[width=\linewidth]{../results/fig_ctps.png}
+\end{figure}
+
+There are good reasons to believe that workers' contracted salary is accurately measured in the RAIS. First, firms have available an orientation handbook that details how to complete the information required by the RAIS. The following box shows an English translation of the section that explains how to complete the information regarding the contracted salary, taken from the 2019 orientation handbook (p.p. 29-30).
+
+\begin{centering}
+	\fbox{\begin{minipage}{\textwidth}
+			\textbf{B.4) Contracted salary.---} Indicate the basic salary specified in the employment contract or recorded in the Work Card, resulting from the last salary change, which can correspond to the last month worked in the base year. In the case of a public servant, indicate the basic wage, as set by law.\\
+			
+			\textbf{B.4.1) Amount} - Should be provided in Brazilian reais (with cents).
+			
+			Notes:				
+			\begin{enumerate}
+				\item For employees whose salary is paid by commission or by various tasks with different remunerations, the monthly average of salaries paid in the base year should be indicated;
+				\item For directors without an employment contract, who opt for the FGTS, indicate the last income in effect in the base year;
+				\item For employees whose CTPS includes the salary plus commission, provide the base salary plus the monthly average of commissions paid in the base year;
+				\item For hourly employees, indicate the hourly rate as defined in the employment contract.
+			\end{enumerate}
+			
+			
+	\end{minipage}	}
+\end{centering}
+
+In addition to the handbook, there are several online resources that provide further assistance. Appendix Figure \ref{fig_youtube} exhibits an example of a publicly-available video that explains how to complete the contracted salary section of the RAIS.
+
+\begin{figure}[h!]
+	\caption{Video explaining how to complete RAIS contracted salary information}\label{fig_youtube}
+	\centering
+	\includegraphics[width=.5\linewidth]{../results/fig_faq_rais.png}
+	\footnotesize \singlespacing \justify \textit{Notes:} Source is \href{https://www.youtube.com/watch?v=JyHenUbFMUE}{RAIS 2017 – Como Informar o Salário Contratual?} 
+\end{figure}
+
+
+\clearpage
+\subsection{Variable Definitions} \label{app:var-def}
+
+This section describes the variables that I use in the regressions presented in Sections \ref{sec:firm-behavior} and \ref{sec:implic}.
+
+\begin{itemize}
+	
+	\item \textbf{Educational attainment of the firm manager.} This variable measures the schooling level of the highest-ranking person in each firm. I first assess if a firm has a chief executive officer (CEO). To identify a firm's CEO, I use the Brazilian occupational code classification (\textit{Classificação Brasileira de Ocupações}, or CBO for short). The CBO identifies CEOs with the code \texttt{121010}. If a firm does not employ any worker with this code, I use the educational attainment of the managers of the firm (identified by a first CBO-digit equal to one) and supervisors (identified by the third CBO-digit equal to zero). In case the firm has no managers or supervisors, I define the highest-ranking person in each firm as the worker with the highest wage.
+	
+	\item \textbf{Firm age.} This variable measures the number of years since the firm was created. I do not directly observe the firm creation date in the data. I proxy the foundation year as the minimum between (i) the first year in which the firm appears in the RAIS (using data since 1995) and (ii) the oldest admission year among all workers employed by the firm. I calculate the firm age as the difference between the current year and the firm creation year.
+	
+	\item \textbf{Firm size growth.} This variable measures the growth rate in the firm's number of employees. To compute this measure, I calculate the percent change in the number of workers employed by each firm between consecutive years.
+	
+	\item \textbf{Firm survival rate.} This variable indicates whether the firm exited the market. I identify a firm as exiting the market if it does not have any active workers at the end of the year.
+	
+	\item \textbf{Has a human resources department.} This variable indicates whether a firm has a human resources (HR) department. I identify firms as having an HR department if one of its employees is an HR manager (CBO codes \texttt{123205}, \texttt{123210}, \texttt{142210},\texttt{142205}) or an HR support staff (CBO codes \texttt{252105}, \texttt{252405}, \texttt{411030}).
+	
+	\item \textbf{Mean earning of firm employees.} This variable measures the average earnings of a firm's workers in a given year. I use workers' average monthly salary throughout a year as the relevant earnings measure and compute the average of this measure across all workers. I use the yearly consumer price index (CPI) to express earnings in real terms.
+	
+	\item \textbf{New hire separated.} This variable measures whether a new hire separated from the firm during the year the worker was hired or the following year. This variable is equal to one if a new hire is not employed at the end of the hiring year or at the end of the following year and is equal to zero if the new hire remains employed at the end of both years.
+	
+	\item \textbf{New hire resigned.} This variable is computed analogously to the one that measures new hires' separation, but using resignations (i.e., worker-initiated separations) instead of overall separations.
+	
+	\item \textbf{Number of hires.} This variable measures the number of workers hired by the firm during 2003--2017. To compute this variable, I only consider hires with a monthly contract and hired at a salary above the federal minimum wage. This sample restriction makes the analyses of the firm random sample comparable to the analyses of the new-hires sample.
+	
+	\item \textbf{Ratio between percentiles of the new hires' salary distribution.} This variable measures the ratio between salaries in different percentiles of the contracted salary distribution among the new hires of a given firm during 2003--2017. Before computing the ratio, I adjust all salaries using the yearly CPI. I winsorize the ratios at the 99th percentile.
+	
+	\item \textbf{Salary increase in percent is an integer.} This variable indicates whether the percent salary increase of a worker is an integer number. To compute this measure, I calculate the percent change in workers' contracted salary between the year the firm hired the worker and the following year. The indicator variable is equal to one if the percent change is an integer and zero otherwise. 
+	
+	\item \textbf{Salary increase in Brazilian Reals is a round number.} This variable indicates whether the salary increase of a worker, measured in Brazilian Reals, is divisible by ten. To compute this measure, I calculate the difference in a worker's contracted salary between the year the worker was hired and the following year. The indicator variable is equal to one if this difference is a round number and zero otherwise. 
+	
+	\item \textbf{Share of employees with completed high school.} This variable measures the fraction of a firm's employees that completed at least high school. To compute this variable, I first calculate the number of workers in each firm with educational data available over the 2003--2017 period. Next, I compute the number of workers who finished high school over the same period. Finally, I compute the ratio between these two variables.  
+	
+	\item \textbf{Share of employees with completed college.} This variable is computed analogously as the share of employees with completed high school.
+	
+	\item \textbf{Worker contracted salary.} The contracted salary represents a worker's salary as per the worker's contract at the end of each year. For a new hire, the contracted salary is the same as the initial salary. For other workers, the contracted salary is equal to the current salary, which might differ from the initial salary due to promotions or other wage adjustments.
+	
+\end{itemize}
+
+
+\subsection{Measurement Error in the Contracted Salaries of 2016 and 2017}
+
+In the 2016 and 2017 RAIS, the contracted salary variable contains substantial measurement error. The RAIS reports two measures of a worker's contracted salary that are equivalent before 2016:
+
+\begin{itemize}
+	\item The first measure is the contracted salary in Brazilian Reals. This is the variable that I use throughout the paper.
+	
+	\item The second measure is the contracted salary measured in multiples of the federal monthly minimum wage.
+\end{itemize}
+
+In 2016 and 2017, these two measures are not equivalent. Half of the workers earn monthly salaries \textit{below} the minimum wage according to the contracted salary in Reals but earn salaries \textit{above} the minimum wage according to the second measure. Upon further exploration, it appears that many firms reported their employees'  earnings in units of hundreds of Brazilian Reals. In other words, for many workers, the contracted salary reported in multiples of the minimum wage is equal to the contracted salary reported in Reals divided by the minimum wage and multiplied by 100. I adjusted the reported earnings for these workers to correct this discrepancy. Excluding 2016 and 2017 from the analysis does not change the main results of the paper.
+
+\subsection{Sample Restrictions} \label{app:samp-rest}
+
+In this section, I describe the sample restrictions that I impose on the new-hires sample. Appendix Table \ref{tab_metadata} shows the number of observations (contracts) at the beginning and at the end of each step of the data cleaning process. The analysis begins in 2003 since this is the first year in which the characteristics of workers' contracts are available in the RAIS.
+
+\begin{enumerate}[leftmargin=*]
+	
+	\item I include only new hires in each year. I exclude the contracts of workers hired during previous years to avoid double-counting the same worker.
+		
+	\item I only consider workers with a valid identifier. Workers in the private sector are uniquely identified by their ID in the Social Integration Program (PIS, for its name in Portuguese, \textit{Programa de Integração Social}). The eleven-digit PIS ID of a worker is constant throughout the worker's career. I only keep workers with an eleven-digit ID.
+	
+	\item I exclude workers employed by public-sector firms. 
+	
+	\item I only consider workers hired at a monthly contract. In the sample, about 91\% of contracts are signed at the monthly level. The second most common type of contract is at the hourly level (about 7.5\% of all contracts). 
+	
+	\item Some firms report hiring workers at a salary below the federal montly minimum salary. This is likely due to measurement error. To deal with this, I drop all the contracts that are made for earnings below the federal monthly minimum salary of each year. 
+	
+	\item Some firms report hiring the same worker multiple times in a given year. I only keep one observation per worker-firm-year. 
+	
+	\item I exclude new hires for whom their contracted wage is missing.
+		
+\end{enumerate}
+
+At the end of this process, I remain with data on over 210 million contracts. I group workers in R\$1 bins (roughly 30 cents of a dollar) and winsorize the right tail of the distribution at R\$10,100 (this affects about 0.3\% of the workers). 
+
+\begin{landscape}
+	\begin{table}[H]{\scriptsize
+			\centering
+			\caption{Sample size after each restriction} \label{tab_metadata}
+			\begin{tabular}{cccccccccccccccc}
+				\toprule
+				& \multicolumn{3}{c}{Raw data} &   & \multicolumn{7}{c}{Fraction of observations remaining after each restriction} &   & \multicolumn{3}{c}{New-hires sample} \\
+				\cmidrule{2-4}\cmidrule{6-12}\cmidrule{14-16}   
+		          	 &           & Unique  & Unique && New   & Valid     & Private & Monthly  & Salary   & No multiple & Contracted     &&           & Unique  & Unique  \\
+				Year & Contracts & workers & firms  && hires & worker ID & firms   & contract & above MW & positions   & wage available && Contracts & workers & firms   \\
+				(1)  & (2)       & (3)     & (4)    && (5)   & (6)       & (7)     & (8)      & (9)      & (10)        & (11)           && (12)      & (13)    & (14)    \\
+				\midrule
+				
+				
+				\ExpandableInput{../results/sample_rest.tex} \midrule
+				\ExpandableInput{../results/sample_rest_all.tex} 
+				
+		\end{tabular}}
+		
+		{\footnotesize
+			\singlespacing \justify
+			
+			\textit{Notes:} This table shows the number of contracts, unique workers, and unique firms in each year before and after imposing the sample restrictions. See text for a description of each sample restriction.
+			
+		}  
+	\end{table}
+	
+\end{landscape}
+

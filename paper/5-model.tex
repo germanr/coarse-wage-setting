@@ -1,0 +1,97 @@
+\section{A Wage-Setting Model with Optimization Frictions} \label{sec:model}
+
+The evidence in Section \ref{sec:firm-behavior} motivates the hypothesis that firm coarse wage-setting is partly behind the rounding observed in the data. To further explore this hypothesis, in this section I build a wage-posting model in which coarse wage-setting is a consequence of optimization frictions. The goal of the model is to account for the bunching observed in the data and to generate additional testable predictions. 
+
+This section first reviews evidence from numerical cognition research to support the model's assumptions. Next, I present a summary of the model and discuss the model's testable predictions. Then, I describe the two research designs that I use to test the predictions and present the results.
+
+\subsection{Stylized Facts from Numerical Cognition Research} \label{sub_psych}
+
+Round numbers are ubiquitous in open numerical judgments. For example, in contingent valuation studies, individuals often report round numbers \citep{whynes_think_2005}. Similarly, in judging the likelihood of future events, subjects often report round-numbered probabilities \citep{manski2010rounding}. According to numerical cognition research, this phenomenon occurs because the mental computation cost of round numbers is lower, and thus, round numbers are the first that ``come to mind.'' I use this finding to motivate one of the assumptions of the model, namely that firms use a round number as an initial estimate of the worker fully-optimal salary.
+
+Numerical cognition research also sheds light on how individuals generate more precise estimates. According to prominence theory \citep{albers1983prominence, albers_prominence_2001}, individuals start from a round number and sequentially refine it by adding and subtracting smaller round numbers until they reach a satisfactory estimate.\footnote{Consistent with this theory, \cite{converse_role_2018} show that individuals are more likely to use ``prominent numbers'' (a subset of the round numbers) in numerical judgments when they are induced to quickly make a judgment and when they are under a high cognitive load. Relatedly, \cite{giustinelli2018tail} show that individuals with high cognitive ability are less likely to give round-numbered responses in expectations surveys, possibly because they have a lower cost of refining their estimates.} Following these findings, in the model I assume that firms can pay some cost to refine their initial estimate of the optimal salary.\footnote{The notion that it is costly to obtain more precise estimates of a target value also has parallels in mathematics and computer science. For example, improving the precision of a Taylor expansion approximation (i.e., computing more decimals) requires increasing the number of expansion terms, requiring more computational power and memory to store the additional terms.}
+
+\subsection{Summary of the Model}
+
+This section presents an abbreviated version of the model, focusing on its key assumptions and predictions. Appendix \ref{app:model} provides a complete description of the model.
+
+In the model, monopsonistic firms decide what wage to offer to prospective workers. In the textbook formulation of the wage-posting model, firms know the marginal revenue product (MRP) of hiring an additional worker and offer a wage proportional to it. The difference between the textbook model and the one presented here is that I depart from the assumption that firms observe worker MRP.
+
+The model rests on two key assumptions. First, I assume that firms form an estimate of the fully-optimal salary (the salary that firms would pay if they had perfect information) based on a coarse rounding heuristic. This assumption is supported by the research on numerical cognition reviewed above. For simplicity, I model hiring decisions around a single round number. Appendix \ref{app:varying-precision} considers an extension where firms can approximate the fully-optimal salary with different degrees of precision.
+
+The second key assumption is that by paying an ``optimization cost,'' firms can generate a more precise estimate of the fully-optimal salary. This reduced-form cost likely reflects a range of underlying mechanisms, including information-gathering costs, attention costs, and the cost of integrating the data available.\footnote{The compensation reports sold by pay-consulting firms such as ADP or PayScale provide a market-based approach to quantifying all these costs. These reports provide advice on how much a firm should pay a prospective employee with given characteristics. Appendix Figure \ref{fig_payscale} shows an example of a compensation report. After gathering information on the prospective employee, such as job title, educational attainment, and years of experience, these firms provide a distribution of suggested compensations. It is noteworthy that the suggested compensations in Appendix Figure \ref{fig_payscale} are not round numbers.} I say that a worker is hired through coarse wage-setting (or a coarse rounding heuristic) if the firm does not pay the optimization cost and instead hires the worker at the round-numbered salary.
+
+Under these two assumptions, the market-level distribution of wages comes from a mixture of two distributions: one distribution with the same support as the distribution of fully-optimal wages and one with support on the set of round numbers. The (endogenous) mixture weight is the fraction of workers hired through coarse wage-setting, a variable denoted by $\theta$. Hence, the cross-section distribution of wages in the model exhibits bunching at round numbers. The standard wage-posting model is a special case of the model with optimization frictions, in which the optimization cost is zero (which implies $\theta = 0$).
+
+\subsection{Model Predictions} 
+
+Firms pay the fully-optimal salary whenever the benefit of doing so exceeds the optimization cost; otherwise, they rely on the coarse rounding heuristic and pay a round-numbered salary. The comparative statics generate the following testable predictions:
+
+\begin{prediction} \label{pred:wedge}
+	As the value of the expected gap between the coarse wage and the fully-optimal wage decreases, firms are more likely to rely on the coarse rounding heuristic and pay a round-numbered salary. This is the case because the profit return to generating a more precise estimate of the fully-optimal wage is proportional to the distance between this wage and the coarse wage.
+\end{prediction}
+
+To test Prediction \ref{pred:wedge}, I exploit changes in the purchasing power of gaps over time and across regions in the country. As inflation erodes the purchasing power of money, the real monetary cost of mispricing a fixed gap decreases. Intuitively, ``getting the wage right'' is less profitable in real terms. 
+
+\begin{prediction} \label{pred:cost}
+	Firms with a higher optimization cost are more likely to rely on coarse wage-setting and thus pay round-numbered salaries. Intuitively, as finding the fully-optimal salary becomes costlier, firms are more likely to rely on a coarse approximation.
+\end{prediction}
+
+The firm optimization cost is unobservable. I use two proxies of firm optimization cost: firm size and hiring experience. Larger firms and firms with more hiring experience might have a lower optimization cost because they are more likely to have an HR department or structured management practices \citep{cornwell2019building}. Thus, to test Prediction \ref{pred:cost}, I evaluate whether a given firm is less likely to pay a round-numbered salary as it grows larger over time or accumulates more hiring experience.
+
+\subsection{Testing the Model Predictions} \label{sec:testing-pred}
+
+I use two research designs to test the model's predictions: a bunching design and a regression design. First, I describe each design and then present the results.
+
+\subsubsection{Bunching Design.} \label{sub:bunching}
+
+The first research design consists of estimating $\theta$, the fraction of workers hired through a coarse rounding heuristic, for each value taken by an observable variable, such as firm size or worker educational attainment, and testing whether the sign of the correlations aligns with the model's predictions. 
+
+By definition, $\theta$ can be written as the ratio between $B$, the number of workers hired through coarse wage-setting, and $N$, the total number of new hires:
+%
+\begin{align} \label{eq_theta_ratio}
+	\theta = \frac{B}{N}.
+\end{align}
+
+While $B$ is not observed in the data, it can be estimated by assuming that the excess mass of workers at round numbers in the earnings distribution represents workers hired through coarse wage-setting. To compute $\hat{B}$, it is necessary to estimate a counterfactual distribution in which there is no bunching, which I obtain using standard techniques of the bunching literature \citep{kleven_bunching_2016}. Appendix \ref{app:ctfl-dist} describes the methodology in detail.
+
+The estimated excess number of workers at round number $r$, $\hat{B}_r$, equals the difference between the number of workers earning $r$ in the actual and the counterfactual distribution, $\hat{B}_r = C_r - \hat{C_r}$. To estimate $B$, I integrate the excess mass across all round numbers:  
+%
+\begin{align} \label{eq_int_exc_mass}
+	\hat{B} = \sum_{r \in R} \hat{B}_r,
+\end{align}
+%
+where $R = \Big\{w \ \Big| \  w = 10k \text{ for some } k \in \mathbb{Z}\Big\}$ is the set of round-numbered salaries. I estimate $\theta$ by replacing $B$ in equation \eqref{eq_theta_ratio} with its empirical counterpart, $\hat{B}$:
+%
+\begin{align} \label{eq_theta_hat}
+	\hat{\theta} = \frac{\hat{B}}{N} = \frac{1}{N} \sum_{r \in R} \hat{B_r}.
+\end{align}
+
+To test the predictions of the model, I estimate $\theta$ conditioning on the values taken by a given covariate. For example, I calculate the excess number of workers in the distribution of college-educated workers and then compute the ratio between this estimate and the total number of college-educated workers. This ratio represents the fraction of college-educated workers who were hired through coarse wage-setting. I repeat this process for workers with only a high-school diploma, etc. More generally, this procedure yields estimates of $B$ and $\theta$ for each value taken by a covariate of interest. I use this procedure to examine whether $\hat{\theta}$ is correlated with characteristics of the firm (e.g., size or hiring experience).
+
+To evaluate whether a decrease in the value of the gap increases coarse wage-setting (Prediction \ref{pred:wedge}), I calculate the correlation between $\hat{\theta}$ (estimated for each metropolitan region-month-year triplet) and the log of the consumer price index (CPI) of the corresponding region-month-year in which the worker was hired.\footnote{Metropolitan region is the most disaggregated geographical level at which CPI data is available. The Brazilian National Statistics Office collects inflation data at the monthly level for eleven metropolitan regions. Each metropolitan region is a collection of several municipalities.} To assess whether a lower optimization cost reduces coarse wage-setting (Prediction \ref{pred:cost}), I test for a negative correlation between $\hat{\theta}$, firm size, and firm hiring experience. In the bunching design, these correlations are mainly identified off of cross-section variation in firm size and hiring experience. Under the assumption that larger firms and firms with more hiring experience have lower optimization costs, we should observe a negative correlation between these variables and $\hat{\theta}$.
+
+\subsubsection{Regression Design.}  \label{sub:lpm}
+
+The second research design is a regression design that allows me to control for a large set of variables, including unobserved heterogeneity at the firm level. I estimate linear probability models of the form:
+%
+\begin{align} \label{reg:lpm}
+	\mathbbm{1}\{w_{ijsmt} \in R\} &= \pi \log\text{CPI}_{smt} + \beta_1 \text{FirmSize}_{jt} + \beta_2 \text{HiringExp}_{jt} + \delta X_{it} +  \notag  \\ &+ \gamma_j + \gamma_t + \gamma_s + \varepsilon_{ijsmt},
+\end{align}	
+%
+where the dependent variable, $\mathbbm{1}\{w_{ijsmt} \in R\}$, equals one if the contracted salary of new hire $i$ employed by firm $j$ in metropolitan region $s$ during month $m$ in year $t$ is a round number, and zero otherwise, $\text{FirmSize}_{jt}$ is the (log) number of employees, and $\text{HiringExp}_{jt}$ is the (log) number of employees hired since the firm first appeared in the sample. Equation \eqref{reg:lpm} also includes $X_{it}$, a vector of worker-level characteristics (gender, education, working experience, and occupation), and region, year, and firm fixed effects. I cluster standard errors at the firm level and normalize all covariates by their standard deviation so that their corresponding coefficients can be interpreted as partial correlations. This normalization makes the results of the regression design comparable to those of the bunching design.
+
+I use the coefficients of equation \eqref{reg:lpm} to test the model's predictions. To assess whether a smaller gap---in real terms---reduces coarse wage-setting (Prediction \ref{pred:wedge}), I test whether $\hat{\pi} > 0$. Given the region and year fixed effects, identification mainly comes from within-region changes in the price level over time. To assess whether a higher optimization costs increases coarse wage-setting (Prediction \ref{pred:cost}), I test whether $\hat{\beta}_1 < 0$ and $\hat{\beta}_2 < 0 $. Since equation \eqref{reg:lpm} includes firm fixed effects, these coefficients are identified off of variation in the size and number of workers hired by a given firm over time. 
+
+\subsubsection{Results.}
+
+Table \ref{tab_predictions} shows the results. Columns 1--2 present the results of the bunching design and columns 3--4 the results of the regression design.
+
+The first row shows the relation between hiring workers at a coarse salary and the log CPI (Prediction \ref{pred:wedge}). The bunching design shows a positive and statistically significant relationship between the fraction of workers hired through coarse wage-setting and the log CPI ($p<0.01$). Consistent with this, the regression design shows that---ceteris paribus---an increase in the inflation rate increases the likelihood of a given firm paying a round-numbered salary to new hires ($p<0.01$).
+
+The second and third rows display the relation between hiring workers at a coarse salary and the two proxies of the optimization cost (Prediction \ref{pred:cost}). Larger firms and firms that have hired more workers have a lower likelihood of relying on coarse salaries ($p<0.01$). Consistent with this, the regression design shows that as firms grow larger in size and accumulate more hiring experience, they become less likely to hire workers at round-numbered salaries ($p<0.01$).
+
+A possible concern is that some of the correlations might be partly driven by the fact that firms that tend to hire workers at round-numbered salaries are more likely to exit the market. This type of selective attrition could explain the negative association between firm size and paying coarse wages. To deal with this, in columns 2 and 4 of Table \ref{tab_predictions}, I re-estimate all specifications using a fixed sample of firms that I observe in all fifteen years of the data. The coefficients tend to be similar to the baseline results, albeit in some cases the magnitudes are smaller and the estimates more imprecise.
+
+As an additional robustness test, in Appendix Table \ref{tab_predictions_rob} I test the model's predictions using alternative measures of the dependent variable. Instead of using all round-numbered salaries, I measure the dependent variable using salaries divisible by 100 (Panel A) or 1,000 (Panel B). The results are remarkably consistent across specifications. For example, the correlation between the fraction of workers hired through coarse wage-setting and firm hiring experience is $-$0.88 in the baseline specification, compared to $-$0.87 when using salaries divisible by 100, and $-$0.64 when using salaries divisible by 1,000.
+
+In summary, I find evidence in support of the two predictions of the model using two different research designs. This is consistent with the hypothesis that the bunching of wages at round numbers observed in the data is partly due to coarse wage-setting. Appendix \ref{app:alt-exp} evaluates whether several alternative explanations are compatible with the bunching observed in the data and the stylized facts documented in this section. The alternative explanations that I discuss are worker left-digit bias, focal points in wage bargaining, collective bargaining agreements, fairness concerns, round wages as a signal of job quality, and changes in marginal tax rates. While some of these explanations have explanatory power in accounting for some features of the data, I conclude that none of them can provide a cohesive account of the entire pattern of results.

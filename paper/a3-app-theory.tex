@@ -1,0 +1,118 @@
+\clearpage 
+\section{Theoretical Appendix} \label{app:theory}
+
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{equation}{0}	
+\renewcommand{\thetable}{C\arabic{table}}
+\renewcommand{\thefigure}{C\arabic{figure}}
+\renewcommand{\theequation}{C\arabic{equation}}
+
+\subsection{Canonical Wage-setting Models in Labor Economics}  \label{app:labor-models}
+
+There are two broad classes of wage-determination models. The first class of models is wage-posting models. In these models, firms choose what wage to post to maximize profit, in which the optimal wage depends on the worker's productivity and the firm's market power, as measured by the elasticity of labor supply. If both worker productivity and firm market power have smooth distributions, then wages should display no bunching. The textbook model of competitive labor markets---in which firms hire workers up to the point that the marginal product of labor equals the market-determined wage---is a special case of wage-posting models. In perfectly competitive models, firms cannot pay a wage below the equilibrium one since no worker would join the firm. Likewise, firms have no incentive to pay a wage above the equilibrium wage. Therefore, in this framework, there is a unique wage determined in equilibrium. Differences in wages across firms and industries might exist due to compensating differentials that arise from job amenity differences. However, as long as these differentials are smoothly distributed across firms, the resulting wage distribution should also be smooth.
+
+The second class of models is wage-bargaining or search-match models. Central to these models are search frictions. The canonical search model is the McCall model \citep{mccall1970economics}. In this model, job offers are characterized by a wage, which is the realization of a random variable distributed according to some exogenous distribution. Since firms offer every possible value in the support of the (exogenous) wage distribution, the resulting distribution of wages is smooth. More generally, in wage-bargaining models, firms match with workers and each match generates a surplus that is divided between the firm and the worker. The amount of surplus workers capture in the form of wages depends on their bargaining power. As long as bargaining power is smoothly distributed across workers, there should not be bunching in the wage distribution.
+
+The following section presents a model that can account for the bunching of wages at round numbers observed in the data.
+
+\subsection{Setup of the Model} \label{app:model}
+
+Consider an economy populated by firms using a linear production technology. Firms face an upward-sloping labor supply curve, $l(w)$. The positive slope of the labor supply means that firms have to increase the wage they offer to increase the probability that a worker will accept the offer. Let $p$ be worker productivity and for now assume that the firm observes $p$. Each time the firm wants to hire a worker, the firm's problem is to choose the wage offer $w$ that maximizes profit
+%
+\begin{align} \label{eq_profit}
+	\pi = l(w)(p-w).
+\end{align}
+%	
+\subsubsection{Market equilibrium in the frictionless model.} 
+
+Before introducing optimization frictions, consider first the solution of the standard frictionless model. Suppose workers are randomly matched to firms. In an interior solution, the profit-maximizing wage is
+%
+\begin{align} \label{eq_opt_w}
+	w^* = p \frac{\eta}{1+\eta},
+\end{align}	
+% 
+where $\eta \equiv l'(w^*) \frac{w^*}{l(w^*)}$ is the elasticity of labor supply. Equation \eqref{eq_opt_w} is the standard solution of the frictionless wage-posting model. This equation tells us that the firm pays workers a fraction $\frac{\eta}{1+\eta}$ of their productivity and earns a profit equal to $\pi(w^*) = \frac{p}{1+\eta} l(w^*)$. As $\eta$ increases, workers get compensated for a higher fraction of their productivity. In the limit, as  $\eta \to \infty$, we get the standard solution of competitive markets: firms pay workers their productivity ($w^* = p$) and earn zero profits. For simplicity, I will refer to $w^*$ as the ``fully-optimal wage,'' although it is optimal only insofar there are no optimization costs. 
+
+The shape of the wage distribution in the frictionless model depends on the distribution of market-power-adjusted productivity, $\tilde{p} \equiv  p \frac{\eta}{1+\eta}$, across firms. Let $F_w$ be the cumulative distribution function (CDF) of observed wages and $F_{\tilde{p}}$ the CDF of $\tilde{p}$. Then,
+%	
+\begin{align}\label{eq_joint_peta}
+	F_w(w) = \Pr(w^* \leq w) &= \Pr\Big(p \frac{\eta}{1+\eta} \leq w \Big) = F_{\tilde{p}}(w).
+\end{align} 
+
+Equation \eqref{eq_joint_peta} indicates that, if $F_{\tilde{p}}$ is a smooth distribution, then the distribution of observed earnings, $F_w(w)$, is also smooth.
+
+\subsubsection{Introducing optimization frictions.} 
+
+I depart from the standard formulation by modeling coarse wage-setting as a consequence of optimization frictions. I assume that firms' initial estimate of the fully-optimal wage is a coarse round-numbered wage, $w_r$. For example, $w_r$ might be the fully-optimal wage rounded to the nearest 1,000. I also assume that firms can pay an optimization cost to learn the fully-optimal wage $w^*$. While these assumptions should not be viewed as a perfect description of firm behavior---but rather as useful approximations---they are consistent with evidence from numerical cognition research reviewed in Section \ref{sub_psych}.
+
+Departing from the fully-optimal wage is costly. When the firm offers a coarse wage above the fully-optimal wage ($w_r > w^*$), the probability that a worker will accept the job offer is higher than the one under the fully-optimal wage, i.e., $l(w_r) > l(w^*)$. This leads to the firm hiring workers faster than what would take them if they offered the fully-optimal wage and paying them a wage higher than is optimal. Symmetrically, when a firm offers a coarse wage below the fully-optimal one ($w_r < w^*$), the firm will be slow to hire workers and the workers will receive a lower wage than is optimal.
+
+Firms will compute $w^*$ when they believe it is profitable to do so, namely, whenever the profit gain from computing the fully-optimal wage exceeds the optimization cost. The expected profit difference between paying the fully-optimal and the coarse wage is
+%
+\begin{align} \label{eq_diff_profit}
+	G(\cdot) &\equiv \E[\pi(w^*)] - \E[\pi(w_r)] \notag \\
+	&= (p-w^*) l(w^*) - (p-w_r) l(w_r).
+\end{align}
+% 
+where the expectation is taken over the possible realizations of worker productivity. A first-order Taylor approximation of $l(w_r)$ around $w^*$ yields
+%
+\begin{align} \label{eq_taylor} 
+	l(w_r) \simeq l(w^*) + l'(w^*)(w_r - w^*). % + \frac{1}{2} l''(w^*)(w_r - w^*)^2
+\end{align}
+
+Plugging \eqref{eq_taylor} back into \eqref{eq_diff_profit} and using the FOC, we can write the gain function as follows 
+%
+\begin{align} \label{eq_G_sol}
+	G(\cdot) &\simeq  (p-w^*) l(w^*) - (p-w_r)\Big(l(w^*) + \frac{l(w^*)}{p-w^*}(w_r - w^*)\Big) \notag \\
+	&= p l(w^*) \frac{\eta^2}{1+\eta} \Big(\frac{w_r - w^*}{w^*}\Big)^2 \notag \\
+	&= \pi(w^*) \eta^2 \tilde{w}^2,
+\end{align}
+%
+where $\tilde{w} \equiv \frac{w_r - w^*}{w^*}$ is the percentage deviation of $w_r$ about $w^*$ or the wedge between the optimal and the round-numbered wage. 
+
+The firm will optimize whenever the profit gain (given by equation \eqref{eq_G_sol}) is greater than the optimization cost. I assume that firms have to forego a fraction $\tau$ of their profits to optimize.\footnote{There are two main approaches to modeling the optimization cost. First, as a fixed cost $c$. In the context of attention to final prices when some taxes are not salient, this is the approach taken by \cite{chetty_salience_2009}. Under a fixed cost of optimizing, firms compute the optimal wage whenever the profit gain (equation \eqref{eq_G_sol}) exceeds $c$. Second, as a fraction $\tau$ of profits. In a context analogous to mine, this is the approach taken by \cite{dube_monopsony_2020}.} Hence, firms fully optimize whenever $\eta^2 \tilde{w}^2 \geq \tau$.
+
+
+\subsubsection{Heterogeneity in the optimization cost.} 
+
+Suppose that the optimization cost $\tau$ is heterogeneously distributed across firms according to the CDF $F_\tau$. The probability that a firm will offer a coarse wage is
+%
+\begin{align} \label{eq_theta}
+	\theta &= \Pr\Big(\tau > \eta^2 \tilde{w}^2  \Big) = 1- F_\tau\Big(\eta^2 \tilde{w}^2 \Big).
+\end{align}
+
+Using equation \eqref{eq_theta}, one can characterize the distribution of observed wages in the model with frictions. A fraction $\theta$ of workers are hired at a coarse round-numbered wage. The remaining workers are hired by firms that optimize according to the distribution of the fully-optimal wage, $F_{\tilde{p}}$. The CDF of observed wages, $F_w$, is a convex combination of the distribution of the fully-optimal wage, $F_{\tilde{p}}$, and the distribution of the coarse round-numbered wage, $F_{w_r}$, with mixture weight $\theta$:
+%
+\begin{align} \label{eq_dist_wage}
+	F_w = \theta F_{w_r} + (1-\theta) F_{\tilde{p}}.
+\end{align}
+
+Consistent with the data, the distribution of observed wages in the model with frictions exhibits bunching at $w_r$. The size of the bunching is given by the fraction of workers hired through coarse wage-setting, $\theta$. The standard wage-posting model is a special case of the model with optimization frictions, in which $\tau = 0$ (which implies $\theta = 0$).
+
+\subsection{Optimization with Varying Degrees of Precision} \label{app:varying-precision}
+
+The baseline model with frictions assumes that the decision of the firm is binary: the firm either offers a wage equal to $w_r$ or pays an optimization cost and offers the fully-optimal wage, $w^*$. In this subsection, I extend the model to incorporate different degrees of precision in refining the initial estimate of the fully-optimal wage. In the generalized model, the wage distribution exhibits bunching at multiple round numbers. The size of the bunching at each round number reflects the relative marginal benefit and cost of making a better approximation to the fully-optimal salary. 
+
+Without loss of generality, assume that wages can have at most four digits.\footnote{In the new-hires sample, less than one percent of all salaries are equal or greater than R\$10,000 (i.e., have more than four digits).} Suppose, furthermore, that the firm's initial estimate of the fully-optimal wage is such a wage rounded to the coarsest round number. In this case, the fully-optimal wage rounded to the nearest 1,000, $w_{1000}$. By paying $\tau_{100}$, they can learn the second digit of the optimal wage and offer the optimal wage rounded to the nearest 100, $w_{100}$. After learning the second digit, the firm can pay $\tau_{10}$ to learn $w_{10}$, the optimal wage to the nearest ten, and finally, pay $\tau_1$ to learn exactly the fully-optimal wage.\footnote{The optimal wage is a continuous variable, so the firm can continue learning the decimals of the fully-optimal wage following the same logic just described. Salaries with cents are rare in the data, which probably reflects the fact that the gain from learning the decimal digits is small.} 
+
+To illustrate the trade-offs faced by the firm, Appendix Figure \ref{fig_profit_graph} plots a firm's profit as a function of the wage posted. The fully-optimal wage (ex-ante unknown to the firm) is at point A. Without loss of generality, suppose that $w_{1000} < w^*$ is the firm's initial estimate of the fully-optimal wage, shown at point B (i.e., the fully-optimal wage rounded to the nearest 1,000). The firm could forfeit a fraction $\tau_{100}$ of its profits to compute the second digit of the optimal wage and learn $w_{100}$ (i.e., the optimal wage up to the nearest 100), shown at point C. The firm will do so as long as $\frac{\pi(w_{100})}{\pi(w_{1000})} \geq \frac{1}{1 - \tau_{100}}$.
+
+
+\begin{figure}[H]
+	\caption{Firm's profit as a function the worker's optimal wage} \label{fig_profit_graph}
+	\centering
+	\includegraphics[width=.8\linewidth]{../results/fig_profit}
+	\footnotesize \singlespacing \justify \textit{Notes:} This figure illustrates the problem of a firm deciding how many digits of a worker's fully-optimal wage to learn. The figure plots the profit of the firm as a function of the wage posted. The optimal wage of the frictionless model, $w^*$, is ex-ante unknown to the firm and shown in  \circled{A}. For illustration purposes, the figure displays the case in which $w_{1000} < w^*$ is the firm's initial estimate of the fully-optimal wage (point \textcolor{blue}{\circled{B}}). The firm can forego a fraction $\tau_{100}$ of its profits to compute the second digit of the optimal wage (i.e., the optimal wage up to the nearest hundred) and learn $w_{100}$, shown in point \textcolor{red}{\circled{C}}. The firm will do so as long as $\pi(w_{100})(1 - \tau_{100}) \geq \pi(w_{1000})$.
+	
+\end{figure}
+
+The firm will continue refining its estimate of the fully-optimal salary as long as the marginal benefit of learning an additional digit is greater than the marginal optimization cost. Observe that learning further digits of the fully-optimal wage shrinks the mispricing wedge at a decreasing rate. If the initial estimate is equal to the fully-optimal wage up to the nearest 1,000, the error from not learning the second digit is at most 500, the error from not learning the following digit is at most 50, and the error from not learning the final digit is at most 5. 
+
+Let $\theta_{1000}$, $\theta_{100}$, and $\theta_{10}$ be the fraction of workers hired at coarse wages divisible by 1,000, 100, and 10, respectively. The distribution of observed wages in this model has the following mixing distribution:
+%
+\begin{align} \label{eq_dist_wage_precision}
+	F_w = \sum_{\mathclap{j \in \{10, 10^2, 10^3\}}} \theta_{j} F_{w_{j}} +  (1 - \sum_{\mathclap{j \in \{10, 10^2, 10^3\} }} \theta_{j}) F_{\tilde{p}}.
+\end{align}
+
+Equation \eqref{eq_dist_wage_precision} is the generalization of equation \eqref{eq_theta} for the case in which firms learn with different degrees of precision. In this case, we observe bunching at several round numbers. The size of the bunching at each round number reflects the fact that different firms learn a different number of digits, depending on how costly it is to do so and how much they stand to gain.

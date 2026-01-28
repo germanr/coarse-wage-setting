@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper,pdftex]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[authoryear]{natbib}
+\usepackage[small]{titlesec}
+\usepackage[justification=centering]{caption}
+\usepackage{hyperref}
+
+\usepackage{amsmath,amsthm,amssymb,graphicx,enumerate,booktabs,bigstrut,rotating,multirow,float,etoolbox,lmodern,comment,listings,qtree,a4wide,moresize,bbm,subcaption,tikz,pdfescape,mathtools,flafter,enumitem,setspace,ragged2e,colortbl,lineno,lscape,pdflscape,stackengine}
+%\usepackage{mathptmx} % For RESTAT
+\usetikzlibrary{snakes,decorations.pathreplacing,positioning, arrows.meta,shapes}
+
+\renewcommand{\baselinestretch}{1.25}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Var}{\mathbb{V}ar}
+\DeclareMathOperator*{\argmax}{argmax}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\hypersetup{colorlinks,linkcolor={red},citecolor={blue},urlcolor={blue}}
+
+\makeatletter
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+	{-3.25ex\@plus -1ex \@minus -.2ex}%
+	{-1.5ex \@plus -.2ex}%
+	{\normalfont\normalsize\bfseries}
+}
+\def\@biblabel#1{\hspace*{-\labelsep}}
+\newcommand*\ExpandableInput[1]{\@@input#1 }
+\makeatother
+
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
+
+\theoremstyle{definition}
+\newtheorem{prediction}{Prediction}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%\doublespacing
+
+\begin{document}
+
+	\title{Coarse Wage-Setting and Behavioral Firms} 
+	
+	\author{Germán Reyes\thanks{\noindent Department of Economics, Middlebury College, 014 Warner Hall, Middlebury, VT 05753 (email: greyes@middlebury.edu). I thank especially my advisor Ted O'Donoghue for invaluable guidance. For helpful comments, I am grateful to Nava Ashraf, Levon Barseghyan, Michele Belot, Douglas Bernheim, Aviv Caspi, Neel Datta, Stefano DellaVigna, Christa Deneault, Rebecca Deranian, Michael Grubb, Ori Heffetz, Guy Ishai, Patrick Kline, Philipp Kircher, David Laibson, Francesca Molinari, Ricardo Perez-Truglia, Marcel Preuss, Alex Rees-Jones, Evan Riehl, Seth Sanders, Jason Somerville, Dmitry Taubinsky, David Wasser, participants in the Russell Sage Foundation summer institute in behavioral economics, participants in the Cornell behavioral economics group, and participants in the UC Berkeley psychology and economics group. Errors and omissions are my own.}}
+	
+	\renewcommand{\today}{\ifcase \month \or January\or February\or March\or %
+		April\or May \or June\or July\or August\or September\or October\or November\or %
+		December\fi \ \number \year} 
+	\date{March 2024}
+	
+	\maketitle
+
+	\begin{abstract} 
+
+		\noindent This paper shows that the bunching of wages at round numbers is partly driven by firm coarse wage-setting. Using data from over 200 million new hires in Brazil, I first establish that contracted salaries tend to cluster at round numbers. Then, I show that firms that tend to hire workers at round-numbered salaries have worse market outcomes. Next, I develop a wage-posting model in which optimization costs lead to the adoption of coarse rounded wages and provide evidence supporting two model predictions using two research designs. Finally, I examine some consequences of coarse wage-setting for relevant economic outcomes. %
+%		\\~\\
+%		\noindent JEL codes: D22, E24, D91.%
+%		\\~\\
+%		\noindent Keywords: Wage-setting, bunching at round numbers; behavioral firms.
+		
+	\end{abstract}
+	
+	
+	\clearpage	
+	\input{1-intro}	
+	\input{2-data}
+	\input{3-anomalies}	
+	\input{4-bunching-firms}
+	\input{5-model}	
+	\input{6-implications}
+	\input{7-discussion}
+	
+	\clearpage
+	\begin{singlespace}
+		\bibliographystyle{chicago}
+		\bibliography{0-coarse-wage-setting}
+	\end{singlespace}
+	
+	\clearpage 
+	\input{8-figures} 
+	\input{9-tables}
+			
+	\clearpage 
+	\appendix 
+	\input{a1-app-add-figs} 	
+	\input{a2-app-add-results} 	
+	\input{a3-app-theory}
+	\input{a4-app-data} 	
+	\input{a5-app-counterfactual-dist}
+	\input{a6-app-alt-exp}
+	\input{a7-app-min-wage}
+	
+\end{document}
+
+%<>><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>

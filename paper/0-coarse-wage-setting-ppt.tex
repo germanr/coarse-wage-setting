@@ -1,0 +1,1286 @@
+\documentclass[usenames,dvipsnames]{beamer}
+\mode<presentation>
+\usetheme{Boadilla}
+\usecolortheme{default}
+\usefonttheme{default}
+\setbeamertemplate{navigation symbols}{}
+\definecolor{beamer@blendedblue}{rgb}{0.2,0.2,0.7}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{caption}[numbered]
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[comma]{natbib}
+\usepackage[beamer,customcolors]{hf-tikz}
+\usepackage{bigstrut,multirow,graphicx,amsmath,amssymb,enumerate,booktabs,subcaption,colortbl,bbm,ragged2e,appendixnumberbeamer,tikz,xcolor,hyperref,subcaption, multicol, caption, subcaption}
+
+\newcommand{\bv}[1]{\textcolor{BlueViolet}{#1}}
+\hypersetup{colorlinks,linkcolor={BlueViolet},citecolor={BlueViolet},urlcolor={BlueViolet}}  
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{0.8}}{\pgfsetfillopacity{1}}
+\setbeamercolor*{block body example}{fg= black, bg= blue!5}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand*{\bibfont}{\scriptsize}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner s ep=2pt] (char) {#1};}}
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+
+\usetikzlibrary{calc}
+\hfsetfillcolor{blue!10}
+\hfsetbordercolor{blue}
+
+\makeatletter
+\newcommand*\ExpandableInput[1]{\@@input#1 }
+\def\@biblabel#1{\hspace*{-\labelsep}}
+\makeatother
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+\title{Coarse Wage-Setting and Behavioral Firms} 
+\author{Germán Reyes}
+\date{\today}
+\institute{P\&E Therapy}
+
+\AtBeginSection[]
+{
+	\begin{frame}[noframenumbering]	\frametitle{Outline}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+\defcitealias{dube_monopsony_2020}{DMN}
+
+
+\begin{document}
+	
+	
+	\makeatletter
+	\def\@listi{\leftmargin\leftmarginii \parsep .2em \itemsep 1em}
+	\def\@listii{\leftmargin\leftmarginii \topsep .2em \parsep .2em \itemsep .2em}
+	\newcommand*{\@rowstyle}{}
+	\newcommand*{\rowstyle}[1]{\gdef\@rowstyle{#1}\@rowstyle\ignorespaces}
+	\newcolumntype{=}{>{\gdef\@rowstyle{}}}
+	\newcolumntype{+}{>{\@rowstyle}}
+	\makeatother
+	
+
+	
+	\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+	
+	\addtocounter{framenumber}{-1}
+	\begin{frame}{Motivation} \label{motivation}
+		
+		\begin{itemize}
+			\item Key question in labor economics: How do firms set wages?
+			%		\item Firm effects contribute ~15\% of the overall variance in log earnings.
+			\item A standard assumption in wage-determination models is that workers and firms behave optimally. 
+			\item However, recent findings cast doubt on this assumption. 
+			\begin{itemize} 
+				\item In both survey and admin data, wages cluster at round numbers.
+				%\item Contradicts the ``no mass points'' results from  \cite{burdett1998wage}.
+			\end{itemize}
+			\item [$\Rightarrow$] Suggests misoptimization behavior by some market participants.
+			\item Recent evidence suggests that the bunching is not due to worker left-digit bias \cite*[][hereafter DMN]{dube_monopsony_2020}.\normalsize
+			\item Is firm misoptimization driving the bunching?
+		\end{itemize}
+		
+	\end{frame}
+	
+	
+	
+	
+
+	
+	\begin{frame}{This paper} \label{roadmap}
+	
+	Use rich administrative data to test the firm misoptimization hypothesis. 
+	
+	\only<1>{ 
+		\begin{itemize}
+			\item Firms that tend to pay round-numbered salaries...
+			\begin{itemize}
+				\item Are less sophisticated (e.g., have less experience hiring).
+				\item Experience worse outcomes (e.g., are more likely to exit the market).
+				\item[$\Rightarrow$] Consistent with firm misoptimization.
+			\end{itemize}
+			
+			\item Why do some firms pay nonstandard wages? 
+			
+			\begin{itemize}
+				\item Some evidence consistent with a  ``round-number heuristic.'' 
+			\end{itemize} 
+			
+		\end{itemize}	
+	}
+	
+	\only<2>{ \fbox{\parbox{\textwidth}{\vspace{-.2cm} 
+				\begin{itemize}
+					\item Firms that tend to pay round-numbered salaries...
+					\begin{itemize}
+						\item Are less sophisticated (e.g., have less experience hiring).
+						\item Experience worse outcomes (e.g., are more likely to exit the market).
+						\item[$\Rightarrow$] Consistent with firm misoptimization.
+					\end{itemize}
+					
+					\item Why do some firms pay nonstandard wages? 
+					
+					\begin{itemize}
+						\item Some evidence consistent with a  ``round-number heuristic.'' 
+					\end{itemize} 
+					
+				\end{itemize}	
+		}}
+	}
+	
+	\begin{itemize}
+		\item Develop a wage-posting model with optimizations costs.	
+		\begin{itemize}
+			\item The model characterizes optimization behavior with four predictions.
+			\item I test these predictions using two research designs.
+			\item[$\Rightarrow$] Results in support of a model of firm heuristic wage-setting.
+		\end{itemize} 
+		
+		\item Are there any downstream consequences for market outcomes?
+		\begin{itemize}
+			\item Within-firm wage inequality, nominal wage stickiness, MW spillovers. 
+		\end{itemize}
+	\end{itemize}
+	
+\end{frame}
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Institutional context and data}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\begin{frame}{Brazilian worker-firm matched data (RAIS)} \label{data}
+		
+		\begin{itemize}
+			\item Universe of formal-sector workers in Brazil over the 2003-2017 period.
+			
+			% \begin{itemize}
+			%\item Accurate information in RAIS is required for workers to receive government programs.
+			%\item Firms face penalties for failure to report.
+			%\item Drawback: no information on informal workers. \hyperlink{hh_survey}{\beamerbutton{RAIS vs. HH survey}}
+			%\end{itemize}
+			
+			\item Key variable: Workers' \underline{contracted salary}. \hyperlink{handbook}{\beamerbutton{RAIS Handbook}}
+			
+			\begin{itemize}
+				\item When a worker is hired, this reflects her initial earnings. \hyperlink{booklet}{\beamerbutton{Emp. book (CTPS)}} % Employment record book (Carteira de trabalho)
+				\item If a worker receives a promotion or a raise, it reflects the new earnings.
+				\item I only use salary data from the year in which each worker is hired.
+				\item For comparability, I focus on monthly earnings contracts ($>$90\%).
+			\end{itemize}
+			
+			\item Samples: 
+			\begin{itemize}
+				\item New-hires sample ($\sim$290M worker-years or ``contracts'').
+				\item Panel of firms (10\% randomly selected firms, $\sim$3.8M firm-years).
+			\end{itemize}
+			
+		\end{itemize}
+		
+	\end{frame}
+	
+	
+	\begin{frame}{Anomalies in the distribution of earnings} \label{anomalies}
+		
+		\begin{figure}[h!]
+			\caption{Histogram of hiring salary (in R\$1 bins)}\label{fig_bunching}
+			\centering
+			\only<1>{\includegraphics[width=.7\linewidth]{../results/fig_1bins-1}}
+			\only<2>{\includegraphics[width=.7\linewidth]{../results/fig_1bins-2}}
+			\only<3>{\includegraphics[width=.7\linewidth]{../results/fig_1bins-3}}
+			\begin{minipage}{\columnwidth}
+				\tiny\rule{0cm}{0cm} \noindent \textbf{Note:} This figure shows the number of contracts, grouped in R\$1 bins, observed in the RAIS over 2003-2017. As a reference, the average exchange rate between the real and the dollar in my sample is 2.45 reals for one US dollar.
+			\end{minipage}    
+		\end{figure}
+		
+		Bunching: \beamerbutton{by firm size} \beamerbutton{by firm pay} \beamerbutton{across industries} \beamerbutton{over time} \hyperlink{rel_freq}{\beamerbutton{relative freq.}}  \hyperlink{dist}{\beamerbutton{last digits' distribution}}
+		
+	\end{frame}
+	
+	\begin{frame}{There is a large excess mass at round-numbered salaries}
+		\begin{figure}[h!]
+			\caption{Fraction of salaries divisible by round numbers: observed vs. uniform}\label{fig_unif}		\centering
+			\includegraphics[width=.75\linewidth]{../results/fig_uniform_benchmark}
+			\begin{minipage}{\columnwidth}
+				\tiny\rule{0cm}{0cm} \noindent \textbf{Notes:} This figure shows the fraction of contracts divisible by 10, 100, and 1000 observed in the data (blue bars) and the fraction that would be observed if the distribution of the last digits of salaries were uniform (red bars). To compute this figure, I use data from my new-hires sample pooling all the years over the 2003-2017 period. The figure excludes workers hired at the minimum wage.
+			\end{minipage}    
+		\end{figure}	
+	\end{frame} 	
+	
+	
+	
+	
+	\begin{frame}{Explaining the bunching}
+		\begin{itemize}
+			\item An important question is whether the bunching is due to nonstandard behavior on the part of workers or firms. 
+			\item The results in \citetalias{dube_monopsony_2020} suggest that bunching is not due to LDB.
+			
+			\begin{itemize}
+				\item I also test for left-digit biased workers and arrive at similar results.\hyperlink{ldb}{\beamergotobutton{}}
+			\end{itemize}
+			
+			\item[$\Rightarrow$] Suggesting that the bunching could be driven by firm misoptimization. 
+			\item Next, I provide evidence consistent with this hypothesis.
+		\end{itemize}
+	\end{frame}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Firm nonstandard behavior as a possible explanation of the bunching}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	\begin{frame}{Measuring firm nonstandard behavior}
+		\begin{itemize}
+			\item First, I measure a firm's propensity to hire workers at round salaries. 
+			
+			\item I compute the fraction of a firm's hires over 2003-2017 whose hiring salary is a round number. 
+			
+			\item 16.7\% of firms only hired workers at round salaries \textcolor{red}{(``bunching firms'')} 
+			
+			\begin{itemize}
+				\item This fraction is 4.1\% for the subset of firms that hired at least five workers ($\simeq$54\% of the firms in my sample).
+				\item This fraction would be higher under a less stringent criteria (e.g., 33.3\% if I require a firm to hire only half of its workers at a round number).
+			\end{itemize}
+			
+			\item Importantly, results are largely robust to how I define bunching firms.
+		\end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{What are the characteristics of bunching firms?} \label{char_firms}
+		
+		\begin{itemize}
+			
+			%\item I explore the characteristics of firms that offer round salaries to new hires. 
+			
+			\item Intuitively, if round salaries are due to firm misoptimization, one would expect bunching firms to be less sophisticated than other firms.
+		\end{itemize}
+		
+		\begin{figure}[H]
+			\caption{Firm-level predictors of being a bunching firm}\label{fig_corr_bunching}  \centering
+			\centering
+			\includegraphics[width=.72\linewidth]{../results/fig_corr_bunching}
+			\begin{minipage}{\columnwidth}
+				\tiny\rule{0cm}{0cm} \noindent \textbf{Notes:} This figure shows the correlation between firm-level variables and a dummy that takes the value one if the contractual salary of all the new hires of a firm during 2003-2017 is a round number. The correlations are calculated after partialling out year, industry (one digit), and microregion fixed effects. 
+			\end{minipage} 
+			
+		\end{figure}
+		
+	\end{frame}
+	
+	
+	
+	\begin{frame}{What are the outcomes of bunching firms?} 	
+		
+		\begin{itemize}
+			% \item Next, I compare the performance of bunching firms with the rest of the firms. 
+			
+			\item Intuitively, if round-numbered salaries are due to misoptimization, one ought to see the consequences reflected in worse firm performance. 
+			
+			\item Outcomes: 
+			\begin{itemize}
+				\item Separation and resignation likelihoods (proxy of worker-firm match);
+				\item The growth rate in the firm's size (as measured by its $\#$ of employees); 
+				\item An indicator for the firm exiting the market (a fn of realized profits). %While I do not observe the firms' profits, the firm growth and survival rates are functions of realized profits. 
+				
+			\end{itemize}
+			
+			\item I estimate linear regressions of the form:
+			%
+			\begin{align} \label{eq_reg_dynamics}
+				y_{ijt} = \alpha + \gamma_{t}  + \textcolor{red}{\beta} \text{Bunching firm}_{j} + \psi X_{j} + \delta Z_{jt} + \varepsilon_{ijt},
+			\end{align}
+			% 
+			where:
+			\begin{itemize}
+				\item $y_{ijt}$ is a firm's outcome.
+				\item $\text{Bunching firm}_{j}$ = 1 if all hires were hired at a round salary. 
+				\item Controls for: year FE, region FE, industry FE, firm size FE.
+				\item Time-varying controls include average salary, firm age, etc. % (linear term and fixed effects for grouped values)
+				%\item Standard errors clustered at the firm-level.
+			\end{itemize}
+		\end{itemize}
+	\end{frame}	
+	
+	
+	\begin{frame}{Bunching firms tend to perform worse}
+		\begin{table}[H]{\scriptsize
+				\begin{center}
+					%\caption{The outcomes of bunching firms} \label{reg_firm_performance}
+					\newcommand\w{1.5}
+					\begin{tabular}{l@{}lR{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}}
+						\midrule
+						Dependent variable: && \tikzmarkin<2>{match}(.4,-0.2)(0,0.5)  New hire  && New hire    && \tikzmarkin<3>{grw}(.4,-0.2)(-0.2,0.5) Firm job    &&  \tikzmarkin<4>{exit}(.4,-0.2)(0.1,0.5) Firm left  \\
+						&& separated && resigned    && growth rate && market \\
+						&& (1) && (2) && (3) && (4)  \\
+						\midrule
+						
+						\addlinespace
+						\multicolumn{8}{l}{\hspace{-1em} \textbf{Panel A. All firms}}  \\ \midrule
+						Bunching firm&&0.018&\sym{***}&0.006&\sym{***}&$-$0.049&\sym{***}&0.021&\sym{***}\\
+						&&(0.003&)&(0.001&)&(0.003&)&(0.001&)\\
+						Mean Dep. Var.&&0.247&&0.057&&0.038&&0.058&\\
+						N&&3,612,284&&3,612,284 \tikzmarkend{match}&&5,073,192 \tikzmarkend{grw}&&6,046,448 \tikzmarkend{exit}&\\
+						\midrule		
+						
+						\addlinespace
+						\multicolumn{8}{l}{\hspace{-1em} \textbf{\tikzmarkin<5>{rob}(.4,-0.2)(-0.2,0.5)Panel B. Firms with at least five workers}} \\ \midrule
+						Bunching firm&&0.046&\sym{***}&0.016&\sym{***}&$-$0.089&\sym{***}&0.036&\sym{***}\\
+						&&(0.006&)&(0.002&)&(0.008&)&(0.003&)\\
+						Mean Dep. Var.&&0.241&&0.058&&0.118&&0.017&\\
+						N&&3,011,920&&3,011,920&&3,331,331&&3,721,508 \tikzmarkend{rob}&\\
+						\midrule 
+					\end{tabular}
+				\end{center}
+			}
+		\end{table}
+		\begin{itemize}
+			\only<1>{\item [\textcolor{white}{-}] \textcolor{white}{Dummy text}}
+			\only<2>{\item New hires in bunching firms are, on average, 1.8 p.p. (or 13.7\%) and 0.6 p.p. (or 10.5\%) more likely to separate and resign, respectively.}
+			\only<3>{\item Bunching firms have, on average, a 4.9 percentage points lower job growth rate (from a baseline of 3.8\%) than non-bunching firms.}
+			\only<4>{\item Bunching firms are 2.1 percentage points (or 36.2\%) more likely to exit the market than non-bunching firms}
+			\only<5>{\item Results are not driven by small firms.}
+		\end{itemize}
+	
+	\end{frame}
+	
+
+
+	
+	
+	\begin{frame}{Why might some firms pay nonstandard salaries?}
+		
+		\begin{itemize}
+			\item In the presence of uncertainty about what the optimal salary is, firms might rely on a rule-of-thumb or heuristic as an approximation.
+			\begin{itemize}
+				\item ``Heuristic wage-setting''
+			\end{itemize}
+			\item Evidence from psychology shows that agents often rely on round numbers in the presence of uncertainty \footnotesize \citep{converse_role_2018}.\normalsize
+			\item I assess whether bunching firms also rely on round numbers when deciding \underline{salary increases} (i.e., different environment w/ uncertainty). \pause
+			
+			%\item The canonical model predicts a worker's wage increase depends on her realized productivity \citep{jovanovic1979job}.
+			
+			\item Canonical model: wage increase = realized productivity.
+			
+			\item Round-number heuristic: wage increase = cognitively-accessible figure
+			
+			\begin{itemize}
+				\item Integer numbers if the increase is measured as a percent change.
+				\item Round numbers if the increase is measured in monetary units (R\$). 
+			\end{itemize}
+			
+		\end{itemize}
+		
+	\end{frame} 
+	
+	
+	
+	\begin{frame}{Bunching across decision environments}
+	\begin{table}[H]{\scriptsize
+			\begin{center}
+				%\caption{Bunching across decision environments} \label{reg_salary_increase}
+				\vspace{-.5cm} 
+				\newcommand\w{1.5}
+				\begin{tabular}{l@{}lR{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}}
+					\midrule
+					Dependent variable: && \multicolumn{3}{c}{Salary increase in R\$}  && \multicolumn{3}{c}{Salary increase in \%} \\
+					&& \multicolumn{3}{c}{is a round number}  && \multicolumn{3}{c}{is an integer}  & \\
+					\cmidrule{3-5} \cmidrule{7-9} 
+					&& (1) && (2) && (3) && (4) \\
+					\midrule
+					\addlinespace
+					\multicolumn{8}{l}{\hspace{-1em} \textbf{Panel A. All firms}}  \\ \midrule
+					Bunching firm&& \tikzmarkin<2>{inc_rn}(.4,-0.2)(0,0.5) 0.283&\sym{***}&0.266&\sym{***}&\tikzmarkin<3>{inc_int}(.4,-0.2)(0,0.5) 0.095&\sym{***}&0.026&\sym{***}\\
+					&&(0.006&)&(0.006&)&(0.004&)&(0.003&)\\
+					Dep. Var. Mean&&0.205&&0.158&&0.129&&0.076\\
+					N&&986,265&&920,484 \tikzmarkend{inc_rn}&&980,570&&924,308 \tikzmarkend{inc_int} \\ \midrule
+					
+					\addlinespace
+					\multicolumn{8}{l}{\hspace{-1em} \tikzmarkin<4>{inc_rob}(.4,-0.2)(0,0.5) \textbf{Panel B. Firms with at least five workers}} \\ \midrule
+					Bunching firm&&0.320&\sym{***}&0.314&\sym{***}&0.074&\sym{***}&0.010&\sym{***}\\
+					&&(0.014&)&(0.015&)&(0.008&)&(0.002&)\\
+					Dep. Var. Mean&&0.186&&0.147&&0.052&&0.006\\
+					N&&828,930&&781,368&&823,776&&785,092 \tikzmarkend{inc_rob}\\
+					\midrule
+					Excl. zero growth && No && Yes && No && Yes \\ \midrule
+				\end{tabular}
+			\end{center}
+		}
+	\end{table}
+	
+	\begin{itemize}
+		\only<1>{\item [\textcolor{white}{-}] \textcolor{white}{Dummy text}}
+		\only<2>{\item Bunching firms are 28 percentage points more likely to offer a round-numbered salary increase in Reals  (from a baseline of 20.5\%) }
+		\only<3>{\item Bunching firms are 9 percentage points more likely to offer an integer salary increase in percent terms (from a baseline of 12.9\%).}
+		\only<4>{\item Results are not driven by small firms.}
+	\end{itemize}
+	
+\end{frame} 
+
+	
+	\begin{frame}{Partial summary}
+		
+		\begin{itemize}
+			\item Some evidence that firm nonstandard wage-setting is behind the bunching observed in the data. 
+			\item This behavior is consistent with some firms relying on a rounding heuristic while deciding what wage to pay new hires. 
+			\item Next, I build a wage-posting model in which this type of heuristic wage-setting behavior is driven by an optimization cost. 
+			\item Goals: Account for the bunching observed in the data and generate predictions that ought to hold if the firm heuristic drives the bunching.
+		\end{itemize}
+		
+		
+	\end{frame} 
+	
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{A wage-posting model with optimization frictions}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\begin{frame}{Overview of the model  \hyperlink{model}{\beamergotobutton{details of the model}}}\label{intro_model}
+		
+		\begin{itemize}
+			\item Standard wage-posting model: firms know the marginal revenue product (MRP) and offer a wage proportional to it.
+			
+			\item Departure: I assume that it is costly to compute the optimal salary.
+			\begin{itemize}
+				\item Firms form beliefs about the optimal salary based on a RN heuristic.
+				\begin{itemize}
+					\item e.g., the optimal wage rounded to the nearest 1000.
+				\end{itemize}
+				\item By paying an ``optimization cost,'' firms can access a more precise estimate of the optimal salary. 
+			\end{itemize} \pause
+			
+			\item In this environment, the market-level distribution of wages is a mixture of two distributions: 
+			
+			\begin{enumerate}
+				\item One with the same support as the distribution of optimal wages.
+				\item Another distribution with support on the set of round numbers.
+			\end{enumerate}
+			
+			\item Mixture weight: the fraction of workers hired at a round number (\textcolor{red}{$\theta$})
+			\begin{itemize}
+				\item The standard model is a special case with opt. cost = 0 ($\Rightarrow \theta = 0$).
+			\end{itemize}
+			
+		\end{itemize}					
+	\end{frame}
+	
+	
+	\begin{frame}{Overview of the predictions and research designs} \label{design}
+		\begin{itemize}
+			\item I use the model to generate four testable predictions.  \hyperlink{predictions}{\beamergotobutton{predictions}}
+			\item I look for features of the environment that shift around the benefit of optimizing (e.g., inflation) or the cost (e.g., uncertainty). \pause
+			\item To test the predictions of the model, I use two research designs:
+		\end{itemize}
+		
+		\begin{enumerate}
+			\item \underline{Bunching design}: Compute the fraction of workers hired at a nonstandard wage ($\theta$) as a function of observable variables. \hyperlink{bunching_design}{\beamergotobutton{details}}
+			\begin{itemize}
+				\item I assume that the excess number of workers
+				at round numbers represents workers hired at suboptimal wages.
+				% \item To compute the excess mass, I follow standard techniques in public finance.
+			\end{itemize} 
+			
+			\item \underline{Regression design}: Estimate LPM with firm FE, where the dependent variable is an indicator for hiring a worker at a round salary. \hyperlink{lpm_design}{\beamergotobutton{details}}
+			\begin{itemize}
+				\item This empirical strategy allows me to adjust for confounding variables.
+				\item However, this design overestates the suboptimality of bunching.
+			\end{itemize}
+			
+		\end{enumerate}	
+		
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Results of the model and alternative explanations} \label{results}
+		\begin{itemize}
+			\item I find evidence in support of the predictions of the model using the two research designs. \hyperlink{res-predictions}{\beamergotobutton{results}}
+			
+			\item This provides evidence in support of a model of firm heuristic wage-setting. 
+			
+			\item I also assess several plausible alternative explanations:
+			
+			\begin{itemize}
+				\item Worker left-digit bias.\hyperlink{ldb}{\beamergotobutton{}}
+				\item Focal points in wage bargaining.\hyperlink{barg}{\beamergotobutton{}}
+				\item Fairness concerns.\hyperlink{fairness}{\beamergotobutton{}}
+				\item Round wages as a signal of job quality.\hyperlink{quality}{\beamergotobutton{}}
+				\item Cash payments constraints.\hyperlink{cash}{\beamergotobutton{}}
+			\end{itemize}
+			
+			\item None of these explanations can provide a cohesive account of the entire pattern of results.
+		\end{itemize}
+	\end{frame}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Implications and conclusions}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\begin{frame}{Implications}\label{implications}
+		\begin{itemize}
+			\item Firm wage-setting policies are a central element of labor markets. 
+			\item Hence, firms' failure to optimize wages might have downstream consequences for market outcomes.
+			\item I show that firm heuristic wage-setting has consequences for:
+			\begin{itemize}
+				\item Within-firm hiring-wage inequality. \hyperlink{ineq}{\beamergotobutton{}}
+				\item Nominal wage stickiness. \hyperlink{stick}{\beamergotobutton{}}
+				\item The spillover effects of changes in the minimum wage. \hyperlink{mw}{\beamergotobutton{}}
+				\item Recovering parameter estimates from first-order conditions. \hyperlink{foc}{\beamergotobutton{}}
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+
+	\begin{frame}{Conclusions}
+		
+		\begin{itemize}
+			\item A sizable literature documents heuristics and biases in individual decision-making. 
+			
+			\item Often-overlooked implication: The decisions individuals make as part of a firm are likely shaped by such biases.
+			
+			\item This paper: A large number of workers are hired at suboptimal wages and this seems to be due to firm nonstandard behavior.
+			
+			\item The evidence is consistent with many firms relying on a heuristic wage-setting.
+			
+			\item This behavior has implications for market-level outcomes.
+		\end{itemize}
+	\end{frame}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%     End of presentation
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\appendix
+	\setcounter{table}{0}
+	\setcounter{figure}{0}
+	\setcounter{equation}{0}	
+	\renewcommand{\thetable}{A\arabic{table}}
+	\renewcommand{\thefigure}{A\arabic{figure}}
+	\renewcommand{\theequation}{A\arabic{equation}}
+
+	\addtocounter{framenumber}{-3}
+	
+
+	\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+	
+
+	\begin{frame}[plain]{References}
+		\bibliographystyle{chicago}
+		\bibliography{references}
+	\end{frame}
+
+	
+	\begin{frame}[plain]
+		\begin{center}
+			\Huge \usebeamercolor[fg]{structure} Appendix
+		\end{center}
+	\end{frame}
+	
+	
+
+	\begin{frame}{The bunching is sizable across all the distribution \hfill  \hyperlink{anomalies}{\beamerbutton{Back}}} \label{rel_freq}
+		\begin{figure}[h!]
+			\caption{Relative frequencies between consecutive earnings (in R\$1 bins)}\label{fig_rel_bunching}
+			\centering
+			\includegraphics[width=.75\linewidth]{../results/fig_1bins_rel}
+			\begin{minipage}{\columnwidth}
+				\tiny\rule{0cm}{0cm} \noindent Note: Each point in this figure shows the frequency of contractual earnings $w$ relative to the frequency of contractual earnngs $w-1$, observed in the RAIS over the 2003-2017. The figure only shows earning between the 3rd and 97th percentile of the earnings distribution across all years.
+			\end{minipage}    
+		\end{figure}
+	\end{frame}
+	
+	
+	\begin{frame}{The distribution of the last digits is far from uniform \hfill \hyperlink{anomalies}{\beamerbutton{Back}}} \label{dist}
+		
+		\begin{figure}[htpb!]
+			\caption{Distribution of the last digits of contractual earnings} \label{fig_last_digits}	\vspace{-.4cm}
+			\centering
+			\begin{subfigure}[t]{.48\textwidth}
+				\caption{Last two digits} \label{fig_last_2digits}
+				\centering
+				\includegraphics[width=\textwidth]{../results/fig_last_2dig}
+			\end{subfigure}
+			\hfill        
+			\begin{subfigure}[t]{0.48\textwidth}
+				\caption{Last three digits} \label{fig_last_3digits}
+				\centering
+				\includegraphics[width=\textwidth]{../results/fig_last_3dig}
+			\end{subfigure}		
+			\begin{minipage}{\columnwidth}
+				\tiny\rule{0cm}{0cm} \noindent Note: Panel (a) of this figure shows the histogram of the last two digits of contractual earning (in R\$1 bins), while panel (b) shows the distribution of the three three digits.
+			\end{minipage}    
+		\end{figure}
+		
+	\end{frame}
+	
+	
+	
+	\begin{frame}{RAIS admin data vs. Household survey \hyperlink{data}{\beamerbutton{Back}}} \label{hh_survey} 
+		\begin{table}[htbp] 
+			\centering
+			\caption{Summary statistics of workers in the RAIS and the PNAD during 2013} \vspace{-.3cm}
+			\resizebox{.95\textwidth}{!}{
+				\begin{tabular}{lccccccccc}
+					\toprule
+					& RAIS  &       & \multicolumn{7}{c}{PNAD} \\
+					\cmidrule{2-2}\cmidrule{4-10}          & \multicolumn{1}{c}{\multirow{2}[4]{*}{All workers}} &       & \multicolumn{1}{c}{\multirow{2}[4]{*}{All workers}} &       & \multicolumn{2}{c}{Legal definition} &       & \multicolumn{2}{c}{Productive definition} \\
+					\cmidrule{6-7}\cmidrule{9-10}          &       &       &       &       & Formal & Informal &       & Formal & Informal \\
+					\midrule
+					\textit{A. Workers' characteristics} &       &       &       &       &       &       &       &       &  \\
+					Average age & 34.85 &       & 38.17 &       & 37.55 & 39.28 &       & 36.67 & 40.10 \\
+					Male (\%) & 58.47 &       & 56.75 &       & 56.25 & 57.64 &       & 57.95 & 55.20 \\
+					White (\%) & 59.10 &       & 47.36 &       & 52.86 & 37.57 &       & 53.12 & 39.96 \\
+					Elementary or less (\%) & 34.24 &       & 48.09 &       & 36.18 & 69.32 &       & 31.26 & 69.77 \\
+					High school complete (\%) & 50.27 &       & 39.02 &       & 46.25 & 26.12 &       & 47.21 & 28.48 \\
+					University complete (\%) & 15.48 &       & 12.89 &       & 17.56 & 4.56  &       & 21.53 & 1.75 \\
+					\midrule
+					\textit{B. Earnings} &       &       &       &       &       &       &       &       &  \\
+					Mean labor income (reals) & 1967.02 &       & 1704.79 &       & 2001.60 & 1094.05 &       & 2154.08 & 1047.38 \\
+					Median labor income (reals) & 1161.32 &       & 1000.00 &       & 1200.00 & 678.00 &       & 1200.00 & 750.00 \\
+					\% of mean earnings divisible by 10 & 2.97  &       & 83.53 &       & 81.66 & 87.36 &       & 83.25 & 83.93 \\
+					\% of mean earnings divisible by 100 & 1.53  &       & 69.60 &       & 69.61 & 69.59 &       & 71.19 & 67.27 \\
+					\% of mean earnings divisible by 1000 & 0.33  &       & 20.45 &       & 22.66 & 15.89 &       & 23.67 & 15.74 \\
+					\% of contractual earnings divisible by 10 & 16.67 &       & N.A.  &       & N.A.  & N.A.  &       & N.A.  & N.A. \\
+					\% of contractual earnings divisible by 100 & 7.21  &       & N.A.  &       & N.A.  & N.A.  &       & N.A.  & N.A. \\
+					\% of contractual earnings divisible by 1000 & 1.51  &       & N.A.  &       & N.A.  & N.A.  &       & N.A.  & N.A. \\
+					\midrule
+					\textit{C. Sector of employment} &       &       &       &       &       &       &       &       &  \\
+					Construction and utilities (\%) & 16.38 &       & 15.64 &       & 14.28 & 18.08 &       & 14.94 & 16.55 \\
+					Manufacturing (\%) & 15.86 &       & 12.90 &       & 15.54 & 8.18  &       & 17.64 & 6.78 \\
+					Primary sector (\%) & 4.22  &       & 12.75 &       & 4.95  & 26.65 &       & 1.40  & 27.37 \\
+					Retail (\%) & 24.49 &       & 22.32 &       & 22.73 & 21.60 &       & 22.34 & 22.30 \\
+					Services (\%) & 39.05 &       & 36.39 &       & 42.50 & 25.49 &       & 43.69 & 26.99 \\
+					\bottomrule
+			\end{tabular}}
+		\end{table}
+		
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{According to the orientation handbook, firms must:  \hfill  \hyperlink{data}{\beamerbutton{Back}}} \label{handbook}
+		
+		\begin{exampleblock}{}
+			\justify \small{ Inform the basic salary contained in the employment contract or registered in the employment record book (``Carteira de Trabalho''), resulting from the last salary change, which may correspond to the last month worked in the base year. In the case of civil servants, inform the basic salary, according to the amount set by law. The value should be informed in reais (with cents).\\~\\
+				
+				Notes:
+				\begin{enumerate}
+					\item For employees whose salary is paid by commission or for various tasks with different remuneration, inform the average monthly of salaries paid in the base;
+					%\item For director without employment relationship, opting for the FGTS, inform the last income in force in the base year;
+					\item For employees whose work card (CTPS) includes salary plus commission, inform the base salary plus the monthly average of commissions paid in the base year;
+					\item For employees on a per hours basis, inform the hourly wage as defined in the employment contract.
+			\end{enumerate}}
+			
+		\end{exampleblock}
+		
+	\end{frame}
+	
+	
+	\begin{frame}{Example of an employment record booklet or CTPS \hfill \hyperlink{data}{\beamerbutton{Back}}} \label{booklet}
+		% A Carteira de Trabalho e Previdência Social (CTPS) 
+		
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=.4\linewidth]{../results/fig_ctps.png}
+			\begin{minipage}{\columnwidth}
+				\scriptsize\rule{0cm}{0cm} \noindent Source: \href{http://www.metalurgicoscaxias.com.br/o-desempregado-que-deve-quase-um-ano-de-salario-por-perder-uma-acao-trabalhista/}{O desempregado que deve quase um ano de salário por perder uma ação trabalhista} 
+			\end{minipage}    
+		\end{figure}
+		
+		
+	\end{frame}
+	
+	
+	
+	
+	
+	\begin{frame}{The standard wage-posting model \hyperlink{intro_model}{\beamerbutton{Back}}}\label{model}
+		\begin{itemize}
+			\item Economy with monopsonistic firms, with heterogeneous productivity $p$
+			\item The firm's problem is to choose a wage $w$ to maximize profits.
+			\item The optimal wage of the frictionless model (``latent wage'') is $$w^* = p \frac{\eta}{1+\eta},$$ where $\eta$ is the elasticity of labor supply.
+			\item The CDF of $w^*$, $F_w$, depends on the CDF of $p \frac{\eta}{1+\eta}$, $F_{p,\eta}$.
+		\end{itemize}
+	\end{frame}
+	
+	
+	% Slide 13, I’m not sure what you mean by “optimization costs.” Shouldn’t be firms be taking costs into account and then either optimizing or not? Do you mean costs of computing marginal product?
+	
+	\begin{frame}{Introducing optimization frictions  \hyperlink{intro_model}{\beamerbutton{Back}}}\label{opt_fric}
+		
+		\begin{itemize}
+			\item Suppose firms don't know $w^*$, but use an approximation, $w_r$.
+			
+			%		\begin{itemize}
+			%			\item For example, they might approximate $w^*$ up to the nearest 100.
+			%		\end{itemize}			
+			
+			% Firms approximate the optimal wage using cognitively accesible round wages. Better approximations are more costly. But the cost is heterogeneous. Sophisticated firms pay a lower cost. Hence, are less likely to round.	
+			
+			\item At some cost $\tau$, firms can compute $w^*$.
+			
+			\item A firm computes $w^*$ if the profit gain, $G(\cdot)$, exceeds the cost:
+			
+		\end{itemize}
+		%
+		\begin{align*}
+			\underbrace{\eta^2}_{\substack{\text{Elasticity of} \\ \text{labor supply}}} \ \underbrace{\Big(\frac{w_r - w^*}{w^*}\Big)^2}_{\substack{\text{Wedge between prior} \\ \text{and latent wage}}} \geq \tau.
+		\end{align*}
+		
+		\begin{itemize}
+			\item Suppose $\tau$ is distributed across firms according to CDF $F_{\tau}$.
+			\item The fraction of bunching firms is	$\theta = \Pr\Big(\tau > G(\cdot) \Big) =  1 - F_\tau(\cdot)$
+			\item With optimization frictions, the distribution of wages is:
+		\end{itemize}
+		%
+		\begin{align*}
+			F_w = \theta F_{w_r} + (1-\theta) F_{p,\eta}.
+		\end{align*}
+	\end{frame}
+	
+	
+		
+	\begin{frame}{Predictions of the model \hyperlink{design}{\beamerbutton{Back}}} \label{predictions}
+		
+		\begin{enumerate}
+			
+			\item Learning is decreasing in the number of digits of the optimal salary left to learn.
+			\item[$\rightarrow$] Compute the fraction of firms that learn $d$ digits conditional on learning $d-1$ digits.\pause
+			
+			\item A larger wedge btw. optimal wage and round number decreases bunching.
+			\item[$\rightarrow$] Exploit changes in the real value of a fixed wedge due to inflation.\pause
+			
+			\item More uncertainty about worker's productivity increases bunching.
+			\item[$\rightarrow$] Compute the amount of bunching when firms hire workers with a relatively high wage variance (a proxy of uncertainty).\pause
+			
+			\item Firms with larger optimization frictions are more likely to bunch.
+			\item[$\rightarrow$] Calculate the amount of bunching for firms of different sizes (assumption: larger firms have smaller optimization costs).
+			
+		\end{enumerate}
+		
+	\end{frame}
+
+
+	\begin{frame}{Bunching design \hyperlink{design}{\beamerbutton{Back}}}\label{bunching_design}
+		
+		Does the likelihood of hiring a worker at a suboptimal wage, $\theta$, vary systematically with observable features of the environment?
+		
+		\begin{itemize}
+			\item By definition, $\theta = B/N$, where 
+			\begin{itemize}
+				\item $B$ is the number of workers hired at a suboptimal wage [not observed].
+				\item $N$ is the total number of workers hired [observed].
+			\end{itemize}
+			
+			
+			\item To measure the excess mass, I follow the bunching literature:
+			\begin{enumerate}
+				\item Estimate a counterfactual dist. had the bunching were not present.
+				\item Compare observed distribution with the counterfactual one.
+				\item [$\Rightarrow$] Difference yields the excess mass $\to$ use $B$ to compute $\theta$. \hyperlink{excess_mass}{\beamerbutton{details}}
+			\end{enumerate}
+			
+			\item Two useful properties of $\theta$: 
+			
+			\begin{enumerate}
+				\item $\hat{\theta}$ can be decomposed, e.g. $\hat{\theta} = \hat{\theta}_{10} + \hat{\theta}_{100} + \hat{\theta}_{1000}$
+				\begin{itemize}
+					\item where $\hat{\theta}_{100}$ is bunching at salaries divisible by 100, and so on.
+				\end{itemize}	
+				\item $\hat{\theta}$ can be calculated within groups (e.g., small and large firms).	
+			\end{enumerate}
+			
+			
+		\end{itemize}
+		
+		
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Firm fixed effects regression design \hyperlink{design}{\beamerbutton{Back}}}\label{lpm_design}
+		
+		I run worker-level regressions of the form
+		%
+		\begin{align} \label{eq_reg_bunching_workers}
+			\mathbbm{1}\{w_{ijsmt} \in R\} &=  \pi \log \text{CPI}_{smt} + \beta_1 \text{Exp}_{it} + \beta_2 \text{Educ}_{it} + \beta_3 \text{X}_{it}  \notag \\ &+ \delta \text{Firm size}_{jt} + \gamma_j + \gamma_t + \gamma_s + \varepsilon_{ijmt}
+		\end{align}	
+		%
+		%where: 
+		\begin{itemize}
+			\item $\mathbbm{1}\{w_{ijsmt} \in R\}$ = 1 if the contracted salary of worker $i$ hired by firm $j$ is a round number and zero otherwise.
+			\item $\log \text{CPI}_{smt}$ is the log of the CPI in region $s$, during month $m$ in year $t$.
+			\item $\text{Exp}_{it}$ is a worker's years of potential
+			experience
+			\item $\text{Educ}_{it}$ is a worker's educational attainment.
+			\item $\text{Firm size}_{jt}$ is the number of workers
+			employed by the firm in year $t$.
+			\item $X_{it}$ are time-varying worker-level controls.
+			\item $\gamma_f, \gamma_m, \gamma_t$ are firm, month and year fixed effects.
+		\end{itemize}
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Estimating $\theta$, part I: Measuring the excess mass \hfill \hyperlink{bunching_design}{\beamerbutton{Back}}} \label{excess_mass}
+		
+		\begin{itemize}
+			\item First, I measure the ``excess mass'' following the bunching literature.
+			\item Let $R$ be the set of contractual salaries that are round numbers
+		\end{itemize}
+		
+		\vspace{-.4cm}
+		\begin{align}
+			R = \Big\{w \ \Big| \  w = 10k \text{ for some } k \in \mathbb{Z}\Big\} 
+		\end{align}
+		
+		\begin{itemize}
+			\item I estimate the following equation
+		\end{itemize}	
+		
+		\vspace{-.4cm}			
+		\begin{align} \label{eq_bunch}
+			C_j = \alpha +\sum_{p=1}^P \beta_p (w_j)^p + \sum_{r \in R} \gamma_r \mathbbm{1}_{\{w_{j} = r\}} + \varepsilon_j
+		\end{align}	
+		
+		\begin{itemize}
+			\item[] where: 
+			\begin{itemize}
+				\item $C_j$ is the number of workers in bin $j$.
+				\item $W_j$ is the earnings of bin $j$.
+				\item  $\sum_{j \in R} \gamma_j$ is a set of dummies, one for each round number.
+				\item  $P$ is the polynomial degree.
+			\end{itemize}
+		\end{itemize}
+		
+	\end{frame}
+	
+	
+	\begin{frame}{Estimating $\theta$, part II: Counterfactual distribution \hfill \hyperlink{bunching_design}{\beamerbutton{Back}}}
+		
+		\begin{itemize}
+			
+			\item The counterfactual distribution is estimated using %  the predicted values from (\ref{eq_bunch}), omitting the contribution of the dummies	
+			
+			\vspace{-.4cm}
+			\begin{align} \label{eq_counterfactual}
+				\hat{C_j} = \hat{\alpha} + \sum_{p=1}^P \hat{\beta}_p (w_j)^p
+			\end{align}	
+			
+			
+			\item Let $B_r$ denote the excess mass at round number $r$. Its estimate, $\hat{B}_r$, is
+			
+			\vspace{-.4cm}
+			\begin{align} \label{eq_B}
+				\hat{B}_r = C_r - \hat{C}_r =  \hat{\gamma_r}
+			\end{align}
+			
+			\item The estimated total number of bunching workers, $\hat{B}$, is 
+			
+			\vspace{-.4cm}
+			\begin{align*}
+				\hat{B} = \sum_{r \in R} \hat{B}_r  
+			\end{align*}
+			
+			\item The estimated fraction of bunchers in the workforce is
+			
+			\begin{align*}
+				\hat{b} = \frac{1}{N} \sum_{r \in R} \hat{B}_r	= \frac{\hat{B}}{N}
+			\end{align*}
+			
+		\end{itemize}
+		
+		
+	\end{frame}
+	
+	
+	
+	
+	\begin{frame}{Estimating $\theta$, part III: Decomposition of $\hat{\theta}$ \hfill \hyperlink{bunching_design}{\beamerbutton{Back}}}
+		
+		\begin{itemize}
+			
+			\item $\hat{\theta}$ can be decomposed into different components by partitioning $R$.		
+			
+			\item For example, let $R_{10}$, $R_{100}$, $R_{1000}$ be the sets of round numbers that can be divided exclusively by 10, 100, and 1000, respectively. 
+			
+			\begin{itemize}
+				\item e.g. $1180 \in R_{10}, 1100 \in R_{100}, 1000 \in R_{1000}$.
+			\end{itemize}
+			
+			\item Then, $R = R_{10} \cup R_{100} \cup R_{1000}$. Using this, we can write $\hat{\theta}$ as
+			
+			\begin{align} \label{eq_theta_hat_decomp}
+				\hat{\theta} = \frac{\hat{B}}{N} &= \frac{1}{N} \Bigg(\sum_{r \in R_{10}} \hat{B_r} + \sum_{r \in R_{100}} \hat{B_r} + \sum_{r \in R_{1000}} \hat{B_r} \Bigg) \notag \\ 
+				&= \hat{\theta}_{10} + \hat{\theta}_{100} + \hat{\theta}_{1000} 
+			\end{align}	
+			
+			\item Useful to assess differential firm sophistication.	
+		\end{itemize}
+		
+		
+	\end{frame}
+	
+	
+	
+	\begin{frame}{Results: Estimates of $\theta$}
+		
+		\begin{itemize}
+			
+			\item About one in five workers are hired at a suboptimal wage $\hat{\theta} = 0.212$ (s.e. = $0.002$).
+			
+			
+			\item Decomposition of $\hat{\theta}$: $\hat{\theta}_{10} = 0.102$, $\hat{\theta}_{100} = 0.091$, and $\hat{\theta}_{1000} = 0.018$.
+			
+			\begin{itemize}
+				\item e.g., $\hat{\theta}_{100} = 0.091$ means that 9.1\% of workers were hired at a suboptimal wage divisible by 100.
+				\item Substantial heterogeneity in how many digits firms choose to learn.
+				\item[$\Rightarrow$] There is a gradient of ``behavioral tendencies'' among firms in my data.
+				\item i.e, while many firms pay round salaries, some pay coarser salaries.
+			\end{itemize}
+			
+		\end{itemize}
+	\end{frame}	
+	
+	
+	\begin{frame}{Prediction: Decreasing learning in number of digits \hyperlink{results}{\beamerbutton{Back}}} \label{res-predictions}
+		
+		
+		\begin{figure}[htpb!]
+			
+			\centering
+			\includegraphics[width=.75\linewidth]{../results/fig_learn_digits}
+			\begin{minipage}{\columnwidth}
+				
+				\tiny\rule{0cm}{0cm} \noindent Note: This figure shows the fraction of firms that learn $d$ digits, conditional on learning the previous $d-1$ digits. By assumption, all firms learn the first digit.
+			\end{minipage}    
+		\end{figure}
+		
+	\end{frame}
+	
+	\begin{frame}{Bunching design results \hyperlink{results}{\beamerbutton{Back}}} \label{bunch-reg}
+		\begin{table}[H]{\scriptsize
+				\begin{center}
+					\caption{\centering Correlates of the fraction of workers hired at suboptimal wages} \label{reg_bunching}
+					\newcommand\w{1,20}
+					\begin{tabular}{l@{}lR{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}}
+						\midrule
+						Dependent Variable && \multicolumn{8}{c}{Share of workers hired at a suboptimal wage}  \\ \cmidrule{3-10} 
+						&& $\hat{\theta}$ && $\hat{\theta}_{10}$   && $\hat{\theta}_{100}$  && $\hat{\theta}_{1000}$ \\
+						&& (1) && (2) && (3) && (4)\\
+						\midrule
+						Consumer Price Index (logs)&&\tikzmarkin<2>{bunch}(.4,-0.2)(0,0.5) 0.089&\sym{**}&0.084&\sym{**}&$-$0.002&&0.102&\sym{**}\\
+						&&(0.035&)&(0.035&)&(0.036&)&(0.044&)\\
+						Potential experience&&0.447&\sym{*}&$-$0.866&\sym{***}&0.882&\sym{***}&0.948&\sym{***}\\
+						&&(0.216&)&(0.190&)&(0.193&)&(0.127&)\\
+						Educational attainment&&0.911&\sym{***}&$-$0.504&&0.864&\sym{***}&0.773&\sym{**}\\
+						&&(0.174&)&(0.400&)&(0.208&)&(0.306&)\\
+						Firm size (bins)&&$-$0.906&\sym{***} &$-$0.815&\sym{***}&$-$0.930&\sym{***}&$-$0.936&\sym{***}\\
+						&&(0.157&)\tikzmarkend{bunch}&(0.217&)&(0.134&)&(0.135&)\\ \midrule
+					\end{tabular}
+					\begin{minipage}{\columnwidth}
+						\tiny\rule{0cm}{0cm} \noindent \textbf{Note:} This table shows linear correlations between the covariates listed across rows and either the fraction of workers hired at a suboptimal salary. Each correlation (and its standard error) is estimated using a separate regression. The dependent variable is the variable denoted by the header column, and the independent variable is the variable indicated by each row. Before running the regressions, variables are normalized by their standard deviation so that the coefficient of the regression can be interpreted as the linear correlation coefficient. Each cell in comes from a different regression. Heteroskedasticity-robust standard errors clustered at the firm level in parentheses. $^{***}$, $^{**}$ and $^*$ denote significance at 10\%, 5\% and 1\% levels, respectively.
+					\end{minipage} 
+				\end{center}
+			}
+		\end{table}	
+	\end{frame}
+	
+	
+	\begin{frame}{Regression design results \hyperlink{results}{\beamerbutton{Back}}} \label{lpm-reg}
+		\begin{table}[H]{\scriptsize
+				\begin{center}
+					\caption{\centering Correlates of hiring a worker at a round salary} \label{reg_lpm}
+					\newcommand\w{1,3}
+					\begin{tabular}{l@{}lR{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}R{\w cm}@{}L{0.43cm}}
+						\midrule
+						Dependent Variable && \multicolumn{8}{c}{=1 if contracted salary is a round number}  \\ \cmidrule{3-10} 
+						&& $w \in R$ && $w \in R_{10}$ && $w \in R_{100}$ &&$w \in R_{1000}$ \\
+						&& (1) && (2) && (3) && (4)\\
+						\midrule
+						CPI  (logs)&&\tikzmarkin<2>{lpm}(.4,-0.2)(0,0.5)0.401&\sym{***}&0.068&\sym{***}&0.415&\sym{***}&0.210&\sym{***}\\
+						&&(0.004&)&(0.004&)&(0.004&)&(0.004&)\\
+						Potential experience&&0.026&\sym{***}&$-$0.007&\sym{***}&0.030&\sym{***}&0.035&\sym{***}\\
+						&&(0.000&)&(0.000&)&(0.000&)&(0.000&)\\
+						Educational attainment&&0.039&\sym{***}&$-$0.018&\sym{***}&0.055&\sym{***}&0.056&\sym{***}\\
+						&&(0.000&)&(0.000&)&(0.000&)&(0.000&)\\
+						Firm size (logs)&&$-$0.035&\sym{***}&0.014&\sym{***}&$-$0.052&\sym{***}&$-$0.035&\sym{***}\\
+						&&(0.001&)\tikzmarkend{lpm}&(0.001&)&(0.001&)&(0.001&)\\
+						\midrule
+					\end{tabular}
+				\end{center}
+				\begin{minipage}{\columnwidth}
+					\tiny\rule{0cm}{0cm} \noindent \textbf{Note:} This table shows linear correlations between the covariates listed across rows a dummy that is equal to one for workers hired at a round salary. The correlations are the estimated coefficients from regression \eqref{eq_reg_bunching_workers}. Before running the regression, I normalize all variables by their standard deviations so that their corresponding coefficients can be interpreted as linear correlations.  $^{***}$, $^{**}$ and $^*$ denote significance at 10\%, 5\% and 1\% levels, respectively.
+					
+				\end{minipage}  
+			}
+		\end{table}	
+	\end{frame}
+	
+
+	
+    \begin{frame}{Left-digit bias as an explanation of the bunching \hyperlink{results}{\beamerbutton{Back}}} \label{ldb}
+	
+	\begin{itemize}
+		
+		\item Is bunching explained by firms responding to left-digit-biased workers?
+		
+		\item Key prediction: missing mass \underline{below} each round number. 
+		
+		\item I develop two tests:
+		
+		\begin{enumerate}
+			\item Look for discontinuities in the mass of workers in the vicinity of each round number. \hyperlink{rd_mass}{\beamerbutton{RD}} \hyperlink{fig_mass}{\beamerbutton{Figures}}
+			\item Analyze whether workers earning just below a round salary are more likely to separate and/or resign (relative to just above). \hyperlink{reg_job_sep}{\beamerbutton{RD}} \hyperlink{fig_sep}{\beamerbutton{Figures}}
+		\end{enumerate} 
+		
+		\item[$\Rightarrow$] No evidence of left-digit-biased workers.
+		
+	\end{itemize}
+	
+\end{frame}
+
+
+
+
+\begin{frame}{Focal points in wage bargaining \hyperlink{results}{\beamerbutton{Back}}} \label{barg}
+	\begin{itemize}
+		\item \cite{hall2012evidence} show that wage bargaining is more prevalent across high-wage knowledge workers, whereas wage posting is more frequent in low-wage blue-collar occupations. 
+		
+		\item Therefore, if the bunching were driven entirely by focal points in wage bargaining, we should not expect to observe any bunching in low-wage occupations, where take-it-or-leave-it offers are more prevalent. 
+		
+		\item To test this hypothesis, I estimate the fraction of bunching firms across industries and occupations. 
+		
+		\item Overall, bunching is pervasive both across industries where we should expect more wage-posting (such as manufacturing) and more wage-bargaining (such as financial intermediation). 
+		
+		\item Similarly, bunching is pervasive across occupations, both blue-collar ones (like administrative workers) and white-collar ones (like professionals, artists, and scientists).
+		
+		\item Therefore, focal points in negotiations are unlikely to explain the bunching observed in the data.
+	\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{$\hat{\theta}$ across industries and occupations \hyperlink{results}{\beamerbutton{Back}}}
+	
+		\begin{figure}
+			\caption{$\hat{\theta}$ across industries and occupations} \label{fig_theta_industry_occ}
+			\centering
+			\vspace{-.4cm} \centering
+			\begin{subfigure}[t]{0.48\textwidth}
+				\caption{Industry level} \label{fig_theta_industry}
+				\centering
+				\includegraphics[width=\textwidth]{../results/fig_theta_ind}
+			\end{subfigure}	
+			\hfill  
+			\begin{subfigure}[t]{0.48\textwidth}
+				\caption{Occupation level} \label{fig_theta_occ}
+				\centering
+				\includegraphics[width=\textwidth]{../results/fig_theta_occ}
+			\end{subfigure} 
+			
+		\end{figure}
+	
+	\begin{minipage}{\columnwidth}
+		\tiny\rule{0cm}{0cm} \noindent \textbf{Notes:} This figure shows the estimated fraction of firms that bunch in every industry (panel a) and across occupations (panel b). To construct this figure, I estimate $\hat{\theta}$ conditioning on the firm industry (panel a) or the occupation of the new hire (panel b). Horizontal lines represent 95\% confidence intervals. The vertical dashed red line displays the unconditional fraction of bunching firms.
+	\end{minipage}    
+
+
+\end{frame} 
+
+
+
+\begin{frame}{Inequity aversion and fairness concerns \hyperlink{results}{\beamerbutton{Back}}} \label{fairness}
+	\begin{itemize}
+		\item Inequity aversion might induce firms to pay the same to workers performing the same task, even if their productivity differs. 
+		
+		\item This can account for firms using a limited number of salaries, but it does not explain why those salaries cluster at round numbers. 
+		
+		\item Moreover, firms with just one worker are the ones most likely to bunch: 
+		
+		\begin{figure}[htpb!]
+			\centering
+			\includegraphics[width=.63\linewidth]{../results/fig_theta_firmsize}  
+		\end{figure}	
+		
+	\end{itemize}
+	
+\end{frame}
+
+
+
+\begin{frame}{Round-numbered wages as a signal of job quality \hyperlink{results}{\beamerbutton{Back}}} \label{quality}
+	\begin{itemize}
+		\item In the consumer market, high-quality firms might price their products at round numbers to signal their quality. 
+		
+		%\begin{itemize}
+			%\item Some evidence suggests high-end retailers are more likely to round their prices relative to low-end retailers \citep{stiving_price-endings_2000}. 
+		%\end{itemize}
+		
+		\item In the labor market, firms might also use the roundness of the salary to signal the job's quality. 
+		
+		\item Crucial to this information-based explanation is that consumers or job-seekers, correspondingly, lack information about quality.
+		
+		\begin{itemize}
+			\item Otherwise, there would not be a need to use prices to signal quality.
+		\end{itemize}
+		
+		\item Suppose workers become better at assessing the quality of a job as they gain more experience. 
+		
+		\item In that case, we should expect firms hiring more experienced workers to be less likely to bunch. 
+		
+		\item However, this is the opposite of what I find. As worker potential experience increases, firms are more likely to bunch.
+		
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}{$\hat{\theta}$ and workers' potential years of experience \hyperlink{results}{\beamerbutton{Back}}}
+	\begin{figure}[h!]
+		\includegraphics[width=.75\linewidth]{../results/fig_theta_potexp}
+	\end{figure}	
+\end{frame} 
+
+
+
+
+\begin{frame}{Cash payment constraints \hyperlink{results}{\beamerbutton{Back}}} \label{cash}
+	
+	
+	\begin{itemize}
+		\item Some firms might offer round salaries because they are technologically constrained to deliver in-cash payments or because paying non-round salaries might be burdensome. 
+		
+		\item This explanation would predict that as electronic payment technologies become cheaper and widespread over time, bunching should decrease. 
+		
+		\item However, overall bunching has \textit{increased} over time.
+		
+		\item Moreover, there is substantial bunching even in the financial intermediation industry, where electronic payments are likely the norm.
+	\end{itemize}
+	
+	
+\end{frame}
+
+
+
+\begin{frame}{Within-firm wage inequality \hyperlink{implications}{\beamerbutton{Back}}} \label{ineq}
+	
+
+	
+	\begin{figure}[htpb]
+		\caption{Wage compression in the salaries of new hires} \label{fig_wage_comp}
+		\centering 	\vspace{-.65cm}
+		\begin{subfigure}[t]{.48\textwidth}
+			\caption{Gini coefficient}\label{fig_wage_comp_gini}
+			\centering
+			\includegraphics[width=\linewidth]{../results/fig_wage_comp_gini}
+		\end{subfigure}
+		\hfill		
+		\begin{subfigure}[t]{0.48\textwidth}
+			\caption{Percentiles ratios}\label{fig_wage_comp_ratios}
+			\centering
+			\includegraphics[width=\linewidth]{../results/fig_wage_comp_ratios}
+		\end{subfigure}
+		\hfill				
+		\begin{minipage}{\columnwidth}
+			\tiny\rule{0cm}{0cm} \noindent \textbf{Notes:} The blue bars in this figure plot the average value of four measures of wage inequality among new hires in non-bunching firms. The red bars plot the same average plus the effect of bunching firms on these measures (i.e., the estimated $\hat{\beta}$ from equation \eqref{eq_reg_dynamics}). I calculate these measures conditional on firms hiring at least two workers in my sample and using data from my firm random sample.	To calculate how bunching firms affect the distribution of wages among new hires, I estimate equation \eqref{reg_firm_performance} using one of the four measures of inequality as the dependent variable. In addition to the bunching firm dummy, the regressions control for: firm age, share of employees with completed high school, share of employees with completed college, educational attainment of the CEO, a dummy that takes the value one if the firm has a human resources department, the median earnings of the firm employees, firm size fixed effects, number of hires fixes effects ($1, 2, 3, ..., 20, \ge$21), region fixed effects, one-digit industry fixed effects, and year fixed effects. The red bars display the sum of the average wage compression among non-bunching firms and the estimated coefficient on the bunching firm dummy. The vertical lines denote the 95\% confidence interval on the bunching firm dummy using heteroskedasticity-robust standard errors clustered at the firm level.
+		\end{minipage}  
+		
+	\end{figure}
+	
+\end{frame}
+
+
+
+\begin{frame}{Nominal wage stickiness \hyperlink{implications}{\beamerbutton{Back}}} \label{stick}
+	
+	\begin{figure}[htpb]
+		\caption{\centering Wage stickiness in the salaries of new hires} \label{fig_wage_sticky}
+		\centering
+		\includegraphics[width=.72\linewidth]{../results/fig_wage_sticky}
+		
+		\begin{minipage}{\columnwidth}
+			\tiny\rule{0cm}{0cm} \noindent \textbf{Notes:} The blue bars in this figure plot the fraction of workers in non-bunching firms whose contractual salary remained constant between the year they were hired and the following year. The red bars plot the same fraction plus the effect of bunching firms on the fraction of sticky wages (i.e., the estimated $\hat{\beta}$ from equation \eqref{eq_reg_dynamics}). I calculate the fraction of sticky wages using data from the year workers were hired and the following year in my firm random sample. I condition the sample on workers remaining employed during the year following their hire. 
+			
+			%To calculate how bunching firms affect the fraction of workers with a sticky wage, I estimate equation \eqref{eq_reg_dynamics} using a dummy that takes the value one if the worker's salary did not change in nominal terms during the year following the hire. In addition to the bunching firm dummy, the regressions control for: firm age, log number of hires, share of employees with completed high school, share of employees with completed college, educational attainment of the CEO, a dummy that takes the value one if the firm has a human resources department, the median earnings of the firm employees, firm size fixed effects, microregion fixed effects, one-digit industry fixed effects, and year fixed effects.  The vertical lines denote the 95\% confidence interval on the bunching dummy using heteroskedasticity-robust standard errors clustered at the firm level.
+			
+		\end{minipage}  
+		
+	\end{figure}
+	
+\end{frame}
+
+
+\begin{frame}{Minimum Wage Spillovers \hyperlink{implications}{\beamerbutton{Back}}} \label{mw}
+	\begin{itemize}
+		\item In the presence of firms that pay suboptimal round-numbered wages, a change in the minimum wage (MW) could generate a novel spillover effect if the new MW crosses a round number. 
+		
+		\item This hypothesis was introduced \cite{dube_monopsony_2020}, who conjecture that a change in the MW might cause firms that initially pay a round wage to optimize. 
+		
+		\begin{itemize}
+			\item However, their data does not allow them to test their hypothesis.
+		\end{itemize}
+		
+		\item  In my sample, I observe hiring decisions under 15 different federal minimum wages---seven of which are round numbers.
+		
+		\item I also observe the year $t+1$ salary of workers hired in year $t$. This allows me to shed some evidence on this potential spillover effect. 
+		
+		\item I analyze the fraction of workers who earn a non-round salary  in year $t+1$ as a function of the salary at which they where hired.
+		
+		
+	\end{itemize}
+	
+	
+\end{frame}
+
+
+\begin{frame}{Recovering parameter estimates from FOC \hyperlink{implications}{\beamerbutton{Back}}} \label{foc}
+	\begin{itemize}
+		\item A final implication of my results is that empirical strategies that infer parameter values from optimality conditions might be biased. 
+		
+		\item A common strategy in IO and other work in the structural tradition is to infer unobservable variables, such as a firm's marginal cost, using firm optimality conditions.
+		\begin{itemize}
+			\item e.g., in the context of a wage-posting model, a researcher equipped with wage data and an estimate of the MRP could use a firm's FOC to back-out an estimate of the elasticity of labor supply.
+		\end{itemize} 
+	
+		\item My findings show that many firms do not optimize with respect to wages $\Rightarrow$ FOC don't characterize wage-posting decisions. 
+		
+		\begin{itemize}
+			\item Deviations from optimality might be sizable for smaller firms and firms that pay coarse salaries.
+		\end{itemize}
+		 
+		\item Despite this, the researcher can bound departures from the FOC using missing mass data, or algorithms that recover optimal values based on the rounding of responses in surveys \citep{giustinelli2018tail}.
+	\end{itemize}
+
+
+\end{frame}
+
+\end{document}
+
+

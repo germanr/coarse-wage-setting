@@ -1,0 +1,195 @@
+\clearpage 
+\section{Alternative Explanations} \label{app:alt-exp} 
+
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{equation}{0}	
+\renewcommand{\thetable}{F\arabic{table}}
+\renewcommand{\thefigure}{F\arabic{figure}}
+\renewcommand{\theequation}{F\arabic{equation}}
+
+In this Appendix, I assess five alternative explanations for the bunching observed in the data. The explanations I discuss are: worker left-digit bias, focal points in wage bargaining, fairness concerns, round wages as a signal of job quality, and changes in marginal tax rates.
+
+\subsection{Worker left-digit bias} \label{app:ldb}
+
+One possible explanation for the clustering of wages at round numbers is that firms use round salaries as an optimal response to a worker bias. A plausible bias that has been documented in other environments is the left-digit bias, that is, the propensity of individuals to pay more attention to the first digit of a number relative to the other digits \citep{korvorst_differential_2008, lacetera_heuristic_2012, strulov2019more}. 
+
+I view the results in Section \ref{sec:firm-behavior} as the main evidence against firms paying round-numbered wages as an optimal response to worker left-digit bias. Specifically, I find that firms that are smaller, younger, have less hiring experience, and do not have an HR department are the ones more likely to pay round-numbered salaries to new hires. It is unlikely that these firms are paying round-numbered salaries to exploit a worker bias. Having awareness of a worker bias requires a considerable amount of sophistication, and these firms are less sophisticated in observable characteristics.
+
+For completeness, I conduct two additional tests for worker left-digit bias. As a first test, I analyze whether workers earning just below round salaries have systematically higher separation rates than workers earning exactly a round salary or a salary just above it. This test is analogous to one conducted by \cite{dube_monopsony_2020} using observational data. Intuitively, in the presence of a left-digit bias, workers with salaries close to but below a round number would be more likely to leave a firm to pursue a better wage than workers earning a round salary or a salary just above it. A problem with separation rates is that the separations might be driven by firms exiting the market, as opposed to workers leaving because they found a better match. In the data, I observe whether the employer or the employee initiated the separation. Thus, I estimate worker \textit{resignation rates} (i.e., worker-initiated separations) in the vicinity of round salaries. 
+
+As a second test for worker left-digit bias, I analyze whether there is an asymmetric mass of workers just below and just above round salaries. According to some models of left-digit biased workers, most of the excess mass observed at round salaries should come from salaries just \textit{below} the round number. There are alternative ways of modeling worker left-digit bias, some of which predict that the missing mass also comes from \textit{above} each round number \citep[e.g.,][]{strulov2019more}. Thus, while this test is informative of the possible existence of left-digit bias, it is by no means conclusive.
+
+
+\subsubsection{Worker resignation rate.} 
+
+Appendix Figure \ref{fig_res_rates}, Panel A shows the resignation rate of workers hired at each salary divisible by 100, a salary just below it, and just above it. To construct this figure, I compute the resignation rate for three sets of workers: those who earn a round salary $w_r$, those whose earnings fall in the $[w_r - h, w_r)$ range where $h$ is the bandwidth (these are the workers ``just below'' $w_r$), and those who earn a salary in the $(w_r, w_r + h]$ range (these are the workers ``just above'' $w_r$). I calculate the resignation rates in the vicinity of each salary divisible by 100 and for $h = 10$. 
+
+The average resignation rate of workers earning just above round salaries is equal to the one for workers hired at a salary just below a round number (in both cases, equal to 0.048). In turn, these workers are, on average, slightly \textit{less} likely to resign relative to workers that earn exactly a round salary. On average across round numbers, the average resignation rate of workers that earn a salary divisible by 100 is 0.051. Moreover, workers earning a round salary have higher resignation rates not just on average, but also for almost every salary divisible by 100. These results are robust to alternative bandwidths.
+
+\textbf{Regression discontinuity analysis}. Next, I use a regression discontinuity (RD) design to assess whether the differences in resignation rates shown above are statistically significant. I estimate regressions of the form:
+%
+%{\small  
+	\begin{align} \label{eq_rd_sep}
+		\text{Res}_{i} &= \alpha + \nu w_{i} + \beta_r  \mathbbm{1}{\{w_{i} = w_r\}} + \gamma_r  \mathbbm{1}{\{w_{i} > w_r\}} \notag \\  &+ \delta_r w_{i} \mathbbm{1}{\{w_{i} > w_r\}} + \varepsilon_{i} \hspace{.1cm}  \text{ if } |w_{i} - w_r| \leq h,
+	\end{align}
+%}
+%
+where $\text{Res}_{i}$ equals one if worker $i$ resigned and zero otherwise, $w_{i}$ is the contracted salary of worker $i$, $w_r$ is a round salary within distance $h$ of $w_i$, and $h$ is the bandwidth. The two coefficients of interest are $\beta_r$ and $\gamma_r$. They measure whether workers earning exactly $w_r$ and workers earning just above $w_r$, respectively, have differential average resignation likelihoods, relative to workers earning just below $w_r$.
+
+Appendix Figure \ref{fig_res_rates}, Panel B plots the estimated $\hat{\beta}_r$'s and $\hat{\gamma}_r$'s for $h = 10$. Each coefficient comes from estimating equation \eqref{eq_rd_sep} around a different round number divisible by 100. Consistent with the visual evidence, workers earning a round salary are \textit{more} likely to resign relative to workers with earnings just below or just above one. This is true for most round numbers, although, in some cases, the standard errors are quite large. In contrast, workers earning just above each round salary do not have systematically different likelihoods of resigning than workers earning just below round salaries.
+
+In sum, these results indicate that the workers who earn a round-numbered salary are \textit{more} likely to resign than workers who earn a salary just below or just above the round number. This provides further evidence against the hypothesis that firms pay round-numbered salaries to exploit worker left-digit bias.
+
+\subsubsection{Mass of contracts below and above round salaries.} \label{app:ldb_mass_work} 
+
+Appendix Figure \ref{fig_mass_workers}, Panel A shows the fraction of workers whose earnings are just below and just above salaries divisible by 100. To construct this figure, I compute the number of workers whose earnings are within a bandwidth $h$ of a round salary $w_r$. Specifically, I compute the number of workers whose earnings fall in the range $[w_r - h, w_r)$---these are the workers ``just below'' $w_r$---and in the range $(w_r, w_r + h]$---these are the workers ``just above'' $w_r$. Next, I add up the number of workers just below and just above. Finally, I calculate the fraction of workers that come from each side of the round number. I do this calculation for each salary divisible by 100 and a bandwidth $h= 10$.
+
+I find no systematic differences in the number of workers. For some round salaries (e.g., R\$500), there are more contracts above the round number, while for other salaries (e.g., R\$1,300), the opposite is true.\\ 
+
+\textbf{Regression discontinuity analysis}. Next, I use a RD design to formally test whether the number of workers exhibits a statistically significant jump at round salaries. I follow the approach of papers that look for discontinuities in the number of observations around a target value \cite[e.g.][]{camacho2011manipulation}. Specifically, I estimate the following regression for each $w_r$ divisible by 100:
+%
+\begin{align}
+	\frac{C_{b}}{N_b} = \tilde{\alpha}_r + \tilde{\beta}_r  \mathbbm{1}{\{w_{b} > w_r\}}  + \tilde{\nu}_r w_{b} + \tilde{\delta}_r w_{b} \mathbbm{1}{\{w_{b} > w_r\}} + \tilde{\varepsilon}_{b} \text{ if } |w_{b}| \leq h \text{ and } w_b \neq w_r, \label{eq_mccrary}
+\end{align}
+%
+where $C_b$ is the count of contracts in bin $b$, $w_b$ is the salary of the bin, $w_r$ is a round salary, $N_b$ is the total number of contracts within distance $h$ of $w_b$, and $h$ is the bandwidth. The dependent variable is the fraction of contracts in each bin. The coefficient of interest is $\tilde{\beta}_r$. It measures whether there is a discontinuity in the fraction of observations in each bin after crossing a round salary $w_r$. Some left-digit bias models predict $\tilde{\beta}_r > 0$. 
+
+Appendix Figure \ref{fig_mass_workers}, Panel B plots the estimated discontinuity $\tilde{\beta_r}$ at each salary divisible by 100. Each coefficient comes from estimating equation \eqref{eq_mccrary} for a different round salary. Across round numbers, the point estimates are small, in many cases negative, and always statistically indistinguishable from zero. The results are similar using alternative bandwidths. Taken together, the results of this section show that the difference between the number of workers just above and just below round salaries does not exhibit any systematic pattern, tends to be quantitatively small, and is statistically insignificant.
+
+
+\subsection{Other Alternative Explanations} \label{app:oth-exp}
+
+\subsubsection{Focal points in wage bargaining.} If workers and firms bargain over the initial salary and round numbers are focal points in these negotiations, then we might expect to observe bunching at round salaries. \cite{hall2012evidence} show that wage bargaining is more prevalent across high-wage knowledge workers, whereas wage posting is more frequent in low-wage blue-collar occupations. Therefore, if the bunching were driven entirely by focal points in wage bargaining, we should not expect to observe any bunching in low-wage occupations, where take-it-or-leave-it offers are more prevalent. To test this hypothesis, I estimate the fraction of workers hired at coarse wages across industries and occupations. Appendix Figure \ref{fig_theta_industry_occ} shows the results. 
+
+Overall, coarse wages are prevalent both across industries where we should expect more wage-posting (such as manufacturing) and more wage-bargaining (such as financial intermediation). Similarly, coarse wages are pervasive across both blue-collar occupations (like administrative workers) and white-collar occupations (like professionals, artists, and scientists). Therefore, focal points in negotiations are unlikely to explain the bunching observed in the data.
+
+\subsubsection{Focal points in collective bargaining agreements.} The bunching of salaries at round-numbered wages could be explained by round numbers acting as focal points in collective bargaining agreements (CBAs), which are legal contracts between a firm and a union representing the workers. To test this explanation, I use data on the universe of CBAs signed during 2008--2017 \citep{lagos2023labor}. For context, 11.7\% of the workers in the new-hires sample were hired by firms that signed a CBA, and 9.1\% of the workers hired at a round-numbered wage were hired by firms that signed a CBA. I use this data to estimate the fraction of workers hired at coarse wages for firms that signed a CBA and firms that did not sign a CBA. Appendix Figure \ref{fig_theta_cba} shows the results. 
+
+Coarse wage-setting is prevalent in both firms that signed a CBA (blue bars) and firms without a CBA (red bars). This is true for firms that signed any type of CBA, and also for  firms that signed a CBA that includes a wage clause (usually related to wage floors and salary adjustments). Therefore, focal points in CBAs are unlikely to the bunching observed in the data.
+
+\subsubsection{Fairness concerns.} Inequity aversion and fairness concerns might induce firms to pay the same salary to coworkers performing the same tasks, even if their productivity is different. By definition, fairness concerns should only matter in firms that employ multiple employees. However, firms with just one employee are the ones most likely to pay coarse wages (Appendix Figure \ref{fig_theta_firm_size}).
+
+\subsubsection{Round wages as a signal of job quality.} In the consumer market, some high-quality firms price their products at round numbers to signal their quality. Some evidence suggests high-end retailers are more likely to round their prices relative to low-end retailers \citep{stiving_price-endings_2000}. In the labor market, firms might also use the roundness of the salary to signal the job's quality. Crucial to this information-based explanation is that consumers or job-seekers, correspondingly, lack information about the quality of relative products or jobs. Otherwise, there would not be a need to use prices to signal quality. If workers become better at assessing the quality of a job as they gain more experience, we should expect firms hiring more experienced workers to be less likely to bunch. However, this is the opposite of what I find. As worker experience increases, firms are more likely to pay a coarse wage.
+
+\subsubsection{Changes in marginal tax rates.} Beginning with \cite{saez_taxpayers_2010}, several papers have shown that changes in marginal incentives---particularly, changes in marginal tax rates---can generate bunching. Thus, one possible concern is that the estimate of $\theta$ might be confounded by changes in the marginal tax rate. To assess this, I collected data on all the changes in the personal income tax rate in Brazil from 2007--2015. I find that none of the kink points in this period were at round numbers. Furthermore, there is no detectable bunching at any of the kink points. For example, Appendix Figure \ref{fig_mtr_2015} shows the distribution of earnings and kink points using data from 2015. For monthly earnings below R\$1,903.98, the marginal tax rate is zero. The marginal tax rate jumps to 7.5\% for earnings between R\$1,903.99 and R\$2,826.65 and keeps increasing by 7.5 percentage points at each of the following income thresholds: R\$2,826.66, R\$3,751.06, and R\$4,664.68. There is no bunching at any of these thresholds. The lack of bunching at the kink points is consistent with the findings of \cite{saez_taxpayers_2010} and \cite{chetty_adjustment_2011}, who show that the bunching observed in tax data is driven by the self-employed---who have more scope to manipulate their earnings---rather than wage employees.
+
+
+\clearpage
+\begin{figure}[H]
+	\caption{Resignation rates below, at, and above salaries divisible by 100} \label{fig_res_rates}
+	\centering
+	\begin{subfigure}[t]{0.48\textwidth}
+		\caption*{Panel A. Average resignation rate in the vicinity of round salaries}\label{fig_avgres_bw10}
+		\centering
+		\includegraphics[width=\linewidth]{../results/fig_avgres_bw10}
+	\end{subfigure}
+	\hfill		
+	\begin{subfigure}[t]{0.48\textwidth}
+		\caption*{Panel B. Regression discontinuity estimates $\hat{\beta}_r$'s and $\hat{\gamma}_r$'s from equation \eqref{eq_rd_sep}} \label{fig_rdres_bw10}
+		\includegraphics[width=\linewidth]{../results/fig_rdres_bw10}
+	\end{subfigure}	
+	
+	{\footnotesize
+		\singlespacing \justify
+		
+		\textit{Notes:} This figure shows whether there are systematic differences in the resignation likelihood of workers earning a salary just below and just above round numbers. To construct the figures in both panels, I use the firm random sample. The figures only display workers with earnings above the minimum wage and below R\$3,500 (which roughly corresponds to the 99th percentile of the earnings distribution above the minimum wage).
+		
+		Panel A shows the average resignation rate of workers earning a salary just below, equal to, or just above each salary divisible by 100, using a bandwidth $h = 10$. For example, the figure shows that the resignation rate of workers earning [R\$490, R\$500) is 4.8\%, the resignation rate of workers earning R\$500 is 5.3\%, and the resignation rate of workers earning (R\$500, R\$510] is 4.4\%. The horizontal dashed lines denote the weighted average resignation rate of each group of workers across all salaries divisible by 100, using the number of workers used to estimate each separation rate as the weight. 
+		
+		Panel B presents the RD estimates of regression \eqref{eq_rd_sep}, using as the outcome a dummy that equals one if the worker resigned and zero otherwise, and using a bandwidth $h = 10$. Each point in the figure comes from a separate regression using data in the vicinity of a salary divisible by 100. For example, the point estimate at $R\$500$ uses data from workers whose earnings are within a distance $10$ of R\$500 (including workers who earn exactly R\$500). The vertical lines denote 95\% confidence intervals using heteroskedasticity-robust standard errors. Standard errors are clustered at the worker level. The horizontal dashed line denotes the weighted average RD coefficients across all regressions, where the weights are the number of workers used to estimate each regression.
+		
+	}	
+\end{figure}
+
+
+
+
+\clearpage
+\begin{figure}[H]
+	\caption{Difference in the number of contracts around salaries divisible by 100} \label{fig_mass_workers}
+	\centering
+	\begin{subfigure}[t]{.48\textwidth}
+		\caption*{Panel A. Share of contracts just below and just above each side of the round salary}\label{fig_mass_mult_100_bw10}
+		\centering
+		\includegraphics[width=\linewidth]{../results/fig_mass_mult_100_bw10}
+	\end{subfigure}
+	\hfill		
+	\begin{subfigure}[t]{0.48\textwidth}
+		\caption*{Panel B. Regression discontinuity estimates $\hat{\beta}_r$'s from equation \eqref{eq_mccrary}}\label{fig_mccrary_bw10}
+		\centering
+		\includegraphics[width=\linewidth]{../results/fig_mccrary_bw10}
+	\end{subfigure}
+	{\footnotesize
+		\singlespacing \justify
+		
+		\textit{Notes:} Panel A shows the fraction of contracts accrued by workers earning a salary just below and just above each salary divisible by 100, using a bandwidth $h = 10$. For example, the figure shows that approximately 48\% of all workers earning [R\$490, R\$510] - \{R\$500\} are contracts just below R\$500, that is, workers earning [R\$490, R\$500), while the other 52\% come from above R\$500, i.e., workers earning (R\$500, R\$510]. If workers' earnings were uniformly distributed, the share of each side would be 50\%.
+		
+		Panel B presents the RD estimates of regression \eqref{eq_mccrary}, using as outcome variable the fraction of workers in each salary bin and a bandwidth $h = 10$. Each point in the figure comes from a separate regression using data in the vicinity of a salary divisible by 100. For example, the point estimate at $R\$500$  uses data from workers whose earnings are within a distance $10$ of R\$500 (excluding workers who earn exactly R\$500). The vertical lines denote 95\% confidence intervals using heteroskedasticity-robust standard errors. The horizontal red dashed line denotes the weighted average RD coefficient across all regressions, where the weights are the number of workers used to estimate each coefficient. %The sample size of each regression is $2h$. 
+		
+		To construct the figures in both panels, I use the new-hires sample. The figures only display workers with earnings above the minimum wage and below R\$3,500 (which roughly corresponds to the 99th percentile of the earnings distribution above the minimum wage).
+		
+	}
+\end{figure}
+
+
+
+
+
+\clearpage
+\begin{figure}[H]
+	\caption{Fraction of workers hired at a coarse salary across industries and occupations} \label{fig_theta_industry_occ}
+	\centering
+	
+	\begin{subfigure}[t]{0.7\textwidth}
+		\caption*{Panel A. Industry level} \label{fig_theta_industry}
+		\centering
+		\includegraphics[width=\textwidth]{../results/fig_theta_ind}
+	\end{subfigure}
+	
+	
+	\begin{subfigure}[t]{0.7\textwidth}
+		\caption*{Panel B. Occupation level} \label{fig_theta_occ}
+		\centering
+		\includegraphics[width=\textwidth]{../results/fig_theta_occ}
+	\end{subfigure}
+	
+	\footnotesize \singlespacing \justify \textit{Notes:} This figure shows the estimated fraction of workers hired at a coarse salary across two-digit industries (Panel A) and occupations (Panel B). To construct this figure, I estimate $\hat{\theta}$ conditioning on the firm industry (Panel A) or the occupation of the new hire (Panel B), following the methodology described in Section \ref{sub:bunching}. Horizontal lines represent 95\% confidence intervals. The vertical dashed red line displays the unconditional fraction of workers hired at a coarse salary.
+	
+	
+\end{figure}
+
+
+
+\clearpage
+\begin{figure}[H]
+	\caption{Collective bargaining agreements and fraction of workers hired through coarse wage-setting ($\hat{\theta}$)} \label{fig_theta_cba}
+	\centering
+	\includegraphics[width=.75\linewidth]{../results/fig_theta_cba.pdf}
+	\footnotesize \singlespacing \justify \textit{Notes:} This figure shows the estimated fraction of workers through coarse wage-setting for firms that did/did not sign a collective bargaining agreement (CBA) during 2008--2017. To construct this figure, I estimate $\hat{\theta}$ conditioning on a firm signing a CBA following the methodology described in Section \ref{sub:bunching}. Vertical lines represent 95\% confidence intervals.
+\end{figure}
+
+\begin{figure}[H]
+	\caption{Firm size and fraction of workers hired through coarse wage-setting ($\hat{\theta}$)} \label{fig_theta_firm_size}
+	\centering
+	\includegraphics[width=.75\linewidth]{../results/fig_theta_firmsize}
+	\footnotesize \singlespacing \justify \textit{Notes:} This figure shows the estimated fraction of workers through coarse wage-setting across firms of different sizes. To construct this figure, I estimate $\hat{\theta}$ conditioning on firm size following the methodology described in Section \ref{sub:bunching}. Vertical lines represent 95\% confidence intervals.
+\end{figure}
+
+
+
+
+
+
+\clearpage
+\begin{figure}[H]
+	\caption{Distribution of contracted salaries and kinks in the income tax schedule during 2015} \label{fig_mtr_2015}
+	\centering
+	\includegraphics[width=.75\linewidth]{../results/fig_mtr_2015} % 
+	\footnotesize \singlespacing \justify \textit{Notes:} This figure shows the distribution of contracted salaries in the new-hires sample during 2015. Red dashed lines indicate kinks in the personal income tax rate during 2015. To construct this figure, I first group workers in R\$1 bins and then count the number of workers in each bin. Workers whose contracted salary is a round number are denoted with colored markers. The figure only displays workers with earnings above the minimum wage and below R\$3,500 (which roughly corresponds to the 99th percentile of the distribution of earnings above the minimum wage). See Appendix \ref{app:data} for the sample restrictions.  
+	
+\end{figure}
+
+
+
+

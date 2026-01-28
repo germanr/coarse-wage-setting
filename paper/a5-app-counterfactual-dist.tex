@@ -1,0 +1,98 @@
+\clearpage
+\section{Estimating a Counterfactual Earnings Distribution} \label{app:ctfl-dist}
+
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{equation}{0}	
+\renewcommand{\thetable}{E\arabic{table}}
+\renewcommand{\thefigure}{E\arabic{figure}}
+\renewcommand{\theequation}{E\arabic{equation}}
+
+In this Appendix, I explain how I construct a counterfactual earnings distribution that does not feature bunching at round-numbered wages.
+
+The standard approach to construct a counterfactual distribution in the bunching literature involves estimating a high-degree polynomial on the observed earnings distribution \textit{excluding} the salaries that exhibit bunching and using the estimated polynomial coefficients to predict the counterfactual number of workers at the salaries where workers bunch. 
+
+The first step consists of regressing the number of workers in bin $b$, $C_b$, on a function $f(\cdot)$ that depends on the earnings of bin $b$, $w_b$,
+%
+\begin{align} \label{eq_bunch}
+	C_b = \alpha + f(w_b) + \varepsilon_b.
+\end{align}	
+
+Previous work has traditionally set $f(\cdot)$ as a high-degree parametric function of earnings, including dummy variables at the salaries of the distribution that exhibit bunching. A straightforward implementation of this approach would be to set
+%
+\begin{align*}
+	f(w_b) = \sum_{p=1}^P \beta_p (w_b)^p + \sum_{r \in R} \gamma_r \mathbbm{1}{\{w_{b} = r\}},
+\end{align*}
+%
+where $\sum_{r \in R} \gamma_r$ is a set of dummies, one for each round number, and $P$ is the polynomial degree. The counterfactual distribution without bunching is estimated using the predicted values from \eqref{eq_bunch}, omitting the contribution of the dummies	
+%
+\begin{align} \label{eq_counterfactual}
+	\hat{C_b} = \hat{\alpha} + \sum_{p=1}^P \hat{\beta}_r (w_b)^p.
+\end{align}	
+
+This parametric approach is well-suited to estimate counterfactual distributions \textit{locally}, that is, around one particular kink or notch. However, I need to estimate a counterfactual density around \textit{each} round number. As I show below, the parametric approach tends to perform poorly in estimating \textit{global} counterfactuals. 
+
+An appealing alternative is to use a non-parametric approach. I estimate kernel-weighted local polynomial regressions using a uniform kernel on non-round-numbered earnings and use the estimates to predict the density at round-numbered wages. Intuitively, to estimate the density at each salary, I use data points ``close'' to the salary, where close is defined by the bandwidth of the kernel. For a sufficiently large bandwidth (i.e., a bandwidth that covers the entire support of the earnings distribution), the local polynomial regression yields the exact same counterfactual as the parametric one. However, for a small bandwidth, the non-parametric approach yields better-behaved estimates. To see this, Appendix Figure \ref{fig_para_nonpara} compares the counterfactual distribution of earnings using the parametric and non-parametric approaches, in both cases using a seventh-degree polynomial. Unlike the non-parametric counterfactual distribution, the parametric one yields a \textit{negative} estimated number of workers in some segments of the distribution.\footnote{The shape of the counterfactual is robust to the polynomial degree (Appendix Figure \ref{fig_robust}, Panel A) and the type of kernel (Appendix Figure \ref{fig_robust}, Panel B). All specifications include minimum wage dummies to improve the fit of the counterfactual density at the minimum wage.}
+
+Since the counterfactual number of observations does not include the contribution of the dummies, the aggregate number of observations in the data, $N$, is necessarily higher than the predicted total number of observations, i.e., $N = \sum_b C_b > \sum_b \hat{C}_b = \hat{N}$. To account for this, I re-weight all observations by $\frac{\sum_b C_b}{\sum_b \hat{C}_b}$. This approach rules out extensive margin responses. This means that the use of coarse wages moves workers around the earnings distribution, but it does not make any worker leave or enter the labor market altogether. This implies that the excess mass at round-numbered salaries corresponds to missing mass at non-round-numbered salaries. 
+
+To quantify the missing mass, I follow \cite{kleven2013using} and select the narrowest manipulation region consistent with the data. To illustrate how the approach works, Appendix Figure \ref{fig_approach1} shows how the counterfactual distribution, excess mass (Panel A), and missing mass (Panel B) around R\$3000 are estimated.
+
+
+\clearpage
+\begin{figure}[H]
+	\caption{Comparison of parametric and non-parametric counterfactual distributions} \label{fig_para_nonpara}
+	\centering
+	\includegraphics[width=.75\linewidth]{../results/fig_para_nonpara}
+	\hfill
+	\footnotesize \singlespacing \justify
+	
+	\textit{Notes:} This figure compares the counterfactual earnings distribution using two different approaches. The red line denotes the counterfactual earnings distribution using a global 7th-degree polynomial. The blue line denotes the counterfactual distribution using a local 7th-degree polynomial. The gray dashed line around the local polynomial denotes the 95\% confidence interval.
+\end{figure}
+
+\clearpage
+\begin{figure}[H]
+	\caption{Robustness of the counterfactual distribution to alternative specifications} \label{fig_robust}
+	\centering
+	
+	\begin{subfigure}[t]{.75\textwidth}
+		\caption*{Panel A. Robustness to polynomial degree} \label{fig_robust_degree}
+		\centering
+		\includegraphics[width=\textwidth]{../results/fig_robust_degree}
+	\end{subfigure}
+	
+	
+	\begin{subfigure}[t]{0.75\textwidth}
+		\caption*{Panel B. Robustness to kernel choice} \label{fig_robust_kernel}
+		\centering
+		\includegraphics[width=\textwidth]{../results/fig_robust_kernel}
+	\end{subfigure}		
+	\footnotesize \singlespacing \justify
+	
+	\textit{Notes:} This figure shows how the counterfactual earnings distributions estimated using a local polynomial approach changes when varying the polynomial degree (Panel A) and the type of kernel (Panel B). See Appendix \ref{app:ctfl-dist} for details on how I estimate the counterfactual distribution.
+	
+\end{figure}
+
+
+\clearpage
+\begin{figure}[H]
+	\caption{Estimation of the counterfactual distribution, excess mass, and missing mass} \label{fig_approach1}
+	\centering
+	\begin{subfigure}[t]{.48\textwidth}
+		\caption*{Panel A. Excess mass} \label{fig_eg_excess}
+		\centering
+		\includegraphics[width=\textwidth]{../results/fig_bunch_3000_a}
+	\end{subfigure}
+	\hfill        
+	\begin{subfigure}[t]{0.48\textwidth}
+		\caption*{Panel B. Missing mass} \label{fig_eg_missing}
+		\centering
+		\includegraphics[width=\textwidth]{../results/fig_bunch_3000_b}
+	\end{subfigure}	
+	\footnotesize \singlespacing \justify
+	
+	\textit{Notes:} This figure illustrates how I calculate the excess mass at R\$3,000. The figure shows the distribution of earnings between R\$2,834 and R\$3,166 in the new-hires sample. Gray dots denote the observed number of workers, while the red line denotes the counterfactual distribution estimated with a local polynomial. The yellow area in Panel A denotes the excess mass, which is equal in magnitude to the missing mass denoted by the red area in Panel B. 
+	
+\end{figure}
+
+

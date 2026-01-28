@@ -1,0 +1,76 @@
+\clearpage
+\section*{Figures and Tables}
+
+\begin{figure}[H]
+	\caption{Bunching at round numbers in the salary distribution}\label{fig_bunching}
+	\centering
+		\centering
+	\begin{subfigure}[t]{.48\textwidth}
+		\caption*{Panel A. Distribution of contracted earnings in R\$1 bins}
+		\centering
+		\includegraphics[width=\linewidth]{../results/fig_1bins}
+	\end{subfigure}
+	\hfill		
+	\begin{subfigure}[t]{0.48\textwidth}
+		\caption*{Panel B. Fraction of salaries divisible by round numbers: observed vs. uniform}
+		\centering
+		\includegraphics[width=\linewidth]{../results/fig_uniform_benchmark}
+	\end{subfigure}
+	\hfill	
+  	\footnotesize
+  	\singlespacing \justify \textit{Notes:} Panel A shows the distribution of contracted salaries in the new-hires sample pooling all of the years during 2003--2017. To construct this figure, I group workers in R\$1 bins and count the number of workers in each bin. Workers whose contracted salary is a round number are denoted with colored markers. The figure only displays workers with earnings above the minimum wage and below R\$3,500 (which corresponds roughly to the 99th percentile of the distribution of earnings above the minimum wage).
+  	  	
+  	Panel B shows the fraction of contracted salaries divisible by 10, 100, and 1,000 in the new-hires sample (blue bars) and the fraction that would be observed if the distribution of the last digits of salaries were uniform (red bars). The figure excludes workers hired at the minimum wage. See Appendix \ref{app:data} for the sample restrictions.
+\end{figure}
+	
+
+\clearpage
+\begin{figure}[H]
+	\caption{Fraction of salaries divisible by round numbers in four Brazilian datasets}\label{fig_rounding_datasets}  \centering
+	\centering
+	\includegraphics[width=.75\linewidth]{../results/fig_rn_datasets}
+	\footnotesize
+	\singlespacing \justify	\textit{Notes:} This figure shows the fraction of monthly salaries divisible by 10, 100, and 1,000 observed in four datasets. The datasets are the 2013 Brazilian Household Survey (\textit{Pesquisa Nacional por Amostra de Domicílios}, abbreviated PNAD), the 2013 Brazilian Labor Force Survey (\textit{Pesquisa Mensal de Emprego}, abbreviated PME), the 2010 Brazilian Population Census (\textit{Censo Demográfico}), and the 2013 Social Programs Registry of Individuals (\textit{Cadastro Único}). The sample comprises full-time workers aged 18--65. I exclude public-sector workers and individuals that who without remuneration. 
+	
+\end{figure}
+
+
+
+\clearpage
+
+\begin{figure}[H]
+	\caption{Wage compression and wage stickiness in the salaries of new hires} \label{fig_wage_comp}
+	\centering
+	\begin{subfigure}[t]{.48\textwidth}
+		\caption*{Panel A. Outcome: Gini coefficient}\label{fig_wage_comp_gini}
+		\centering
+		\includegraphics[width=\linewidth]{../results/fig_wage_comp_gini}
+	\end{subfigure}
+	\hfill		
+	\begin{subfigure}[t]{0.48\textwidth}
+		\caption*{Panel B. Outcome: Percentiles ratios}\label{fig_wage_comp_ratios}
+		\centering
+		\includegraphics[width=\linewidth]{../results/fig_wage_comp_ratios}
+	\end{subfigure}
+	
+	\centering	
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering	
+		\caption*{Panel C. Outcome: Initial wage remained constant in nominal terms}
+		\centering
+		\includegraphics[width=\linewidth]{../results/fig_wage_sticky}
+	\end{subfigure}
+	
+	\vspace{-.3cm}
+				
+	\begin{subfigure}[t]{\textwidth}		
+		\centering
+		\includegraphics[width=0.75\linewidth]{../results/fig_wage_comp_leg}
+	\end{subfigure} \vspace{-.5cm}
+	{\footnotesize
+		\singlespacing \justify
+		
+		\textit{Notes:} Blue bars plot the average of the variable listed in the panel title for non-bunching firms. Red bars plot the sum of this average and the estimated bunching firm effect (i.e., the estimated $\hat{\beta}$ from equation \eqref{reg_firm_performance}). To calculate the effect of bunching firms on each outcome, I estimate equation \eqref{reg_firm_performance} at the firm level using as the dependent variable one of the four measures of inequality or the measure of wage stickiness. In addition to the bunching firm dummy, the regressions control for: firm age, share of employees with completed high school, share of employees with completed college, educational attainment of the firm manager, a dummy for having an HR department, the mean earnings of the firm employees, and fixed effects for firm size, number of hires, and industry-by-microregion fixed effects. The wage inequality regressions are estimated at the firm level for firms that hired at least two workers in the sample. The wage rigidity regressions are estimated at the worker-by-firm-by-year level and additionally control for worker gender, race, and occupation. The vertical lines denote the 95\% confidence interval on the bunching firm dummy using heteroskedasticity-robust standard errors clustered at the firm level.
+								
+	}
+\end{figure}

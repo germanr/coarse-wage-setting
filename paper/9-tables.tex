@@ -1,0 +1,148 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      Section 2 - Background          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+
+\begin{table}[H]
+	\caption{\centering Summary statistics on workers in the RAIS, new-hires sample, and firm random sample} \label{tab_rais_summ}
+	{\footnotesize
+		\begin{centering} 
+			\protect
+			\begin{tabular}{lcccc}
+				\addlinespace \addlinespace \midrule			
+				&   & New-hires  & Firm random \\
+				& RAIS & sample & sample \\ \cmidrule{2-4}
+				& (1) & (2) & (3) \\
+				\midrule 	
+				
+				\multicolumn{4}{l}{\hspace{-1em} \textbf{Panel A. Worker characteristics}} \\ 
+				\ExpandableInput{../results/summ-char.tex} \midrule
+				
+				\multicolumn{4}{l}{\hspace{-1em} \textbf{Panel B. Earnings}} \\ 
+				\ExpandableInput{../results/summ-earnings.tex} \midrule						
+				
+				\multicolumn{4}{l}{\hspace{-1em} \textbf{Panel C. Industry}} \\ 
+				\ExpandableInput{../results/summ-industry.tex} \midrule											
+				
+				\multicolumn{4}{l}{\hspace{-1em} \textbf{Panel D. Region}} \\ 					
+				\ExpandableInput{../results/summ-region.tex} \midrule	
+				
+				
+				\ExpandableInput{../results/summ-n.tex} \midrule \addlinespace \addlinespace
+				
+				
+			\end{tabular}
+			\par\end{centering}
+		
+		\begin{singlespace} \vspace{-.5cm}
+			\noindent \justify \textit{Notes:} This table shows summary statistics on workers in the \textit{Relação Anual de Informações Sociais} (RAIS), the new-hires sample, and the firm random sample. See Section \ref{sec:context-data} for sample definitions. Earnings are expressed in Brazilian Reals.
+			
+		\end{singlespace}	
+		
+	}
+\end{table}
+
+
+
+
+\clearpage
+\begin{table}[H]{\footnotesize
+		\begin{center}
+			\caption{Outcomes of firms that tend to hire workers at round numbers} \label{reg_firm_performance}
+			\newcommand\w{2}
+			\begin{tabular}{l@{}lR{\w cm}@{}L{0.5cm}R{\w cm}@{}L{0.5cm}R{\w cm}@{}L{0.5cm}R{\w cm}@{}L{0.5cm}}
+				\midrule
+				&& \multicolumn{8}{c}{Dependent variable:} \\ \cmidrule{3-10}
+				&& New hire  && New hire    && Firm job    && Firm left  \\
+				&& separated && resigned    && growth rate && market \\
+				&& (1) && (2) && (3) && (4)  \\
+				\midrule
+				\ExpandableInput{../results/perf_bunch_allf}  \midrule
+			\end{tabular}
+		\end{center}
+		\begin{singlespace}  \vspace{-.5cm}
+			\noindent \justify \textit{Notes:} This table displays estimates of $\beta$ from equation \eqref{reg:firm-outcomes}. Each column shows the result of a regression using the dependent variable listed in the column header. In column 1, the outcome equals one if a new hire separated from the firm during the year she was hired (year $t$) or the following year (year $t+1$), and zero otherwise. Column 2 is defined analogously but using worker resignation likelihood instead of separation likelihood. In column 3, the dependent variable is the percent change in the number of workers employed between consecutive years. In column 4, the outcome is a dummy that equals one if the firm had no workers at the end of the year and zero otherwise.
+			
+			I use the firm random sample to estimate all regressions. In columns 1 and 2, the regressions are estimated at the worker-by-firm-by-year level and only using data from the year in which a worker was hired and the following year. In columns 3 and 4, the regressions are estimated at the firm-by-year level.
+			
+			The regressions control for firm age, share of employees with completed high school, share of employees with completed college, educational attainment of the firm manager, a dummy for having an HR department, the mean earnings of the firm employees, firm size fixed effects, number of hires fixed effects, and industry-by-microregion-by-year fixed effects. The specifications in columns 1 and 2 additionally control for worker gender, race, and occupation. 
+			
+			Heteroskedasticity-robust standard errors clustered at the firm level in parentheses. $^{***}$, $^{**}$ and $^*$ denote significance at the 1\%, 5\% and 10\% levels.
+		\end{singlespace} 	
+	}
+\end{table}
+
+
+\clearpage
+\begin{table}[H]{\footnotesize
+		\begin{center}
+			\caption{The use of round-numbered salaries across decision environments} \label{reg_salary_increase}
+			\newcommand\w{1.45}
+			\begin{tabular}{l@{}lR{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}}
+				\midrule
+				&& \multicolumn{12}{c}{Dependent variable:} \\ \cmidrule{3-13}
+				&& \multicolumn{3}{c}{Salary increase in R\$}  && \multicolumn{3}{c}{Salary increase in \%} && \multicolumn{3}{c}{Either a round} \\
+				&& \multicolumn{3}{c}{is a round number}  && \multicolumn{3}{c}{is an integer} && \multicolumn{3}{c}{number or an integer} & \\
+				\cmidrule{3-5} \cmidrule{7-9} \cmidrule{11-13}
+				&& (1) && (2) && (3) && (4) && (5) && (6) \\
+				\midrule
+				\ExpandableInput{../results/heurist_bunch_allf} 
+				Excl. zero growth && No && Yes && No && Yes && No && Yes \\ \midrule 
+			\end{tabular}
+		\end{center}
+		\begin{singlespace} \vspace{-.5cm}
+		
+		\noindent \justify \textit{Notes:} This table displays estimates of $\beta$ from equation \eqref{reg:firm-outcomes}. In columns 1 and 2, the outcome is a dummy that equals one if the change in worker's $i$'s contracted salary between $t$ and $t+1$`, measured in Brazilian Reals, is a round number and zero otherwise. In columns 3 and 4, the outcome is a dummy that equals one if the percent change between $t$ and $t+1$ of worker $i$'s contracted salary is an integer and zero otherwise. In columns 5 and 6, the outcome equals one if either the absolute wage change is a round number or the percent change is an integer and zero otherwise. 
+		
+		I use the firm random sample to estimate all regressions. The regressions are estimated at the worker-by-firm-by-year level and only using data from the year in which a worker was hired and the following year. Even columns exclude new hires whose salary did not change in nominal terms.
+		
+		The regressions control for worker gender, worker race, worker occupation, firm age, share of employees with completed high school, share of employees with completed college, educational attainment of the firm manager, a dummy for having an HR department, the mean earnings of the firm employees, firm size fixed effects, number of hires fixed effects, and industry-by-microregion-by-year fixed effects. 
+		
+		Heteroskedasticity-robust standard errors clustered at the firm level in parentheses. $^{***}$, $^{**}$ and $^*$ denote significance at the 1\%, 5\% and 10\% levels.
+
+		\end{singlespace}
+		
+	}
+\end{table}
+
+
+\clearpage
+\begin{table}[H]{\footnotesize
+		\begin{center}
+			\caption{\centering Testing the predictions of the model} \label{tab_predictions}
+			
+			\newcommand\w{1.8}
+			\begin{tabular}{l@{}lR{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}R{\w cm}@{}L{0.45cm}}
+				\midrule
+				& \multicolumn{8}{c}{Dependent variable} \\ \cmidrule{3-10} 
+				& \multicolumn{4}{c}{Fraction of workers hired} && \multicolumn{4}{c}{Dummy for hiring a worker} \\
+				& \multicolumn{4}{c}{through coarse wage-setting $(\hat{\theta} )$} && \multicolumn{4}{c}{at a round number ($\mathbbm{1}\{w_{i} \in R\}$)} \\
+				\cmidrule{3-5} \cmidrule{7-10}
+				&& (1) && (2) && (3) && (4)\\
+				\midrule
+				\ExpandableInput{../results/reg_mult10_logcpi}
+				\ExpandableInput{../results/reg_mult10_lfirm_size}
+				\ExpandableInput{../results/reg_mult10_lcdf_hiring}
+				\midrule
+				Fixed firm sample? && No && Yes && No && Yes \\
+				\midrule
+			\end{tabular}
+		\end{center}
+		\begin{singlespace} \vspace{-.5cm}
+			\noindent \justify \textit{Notes:} This table shows linear correlations between the covariate listed in the row header and the outcome listed in the column header. 
+			
+			In columns 1--2, the dependent variable is the estimated fraction of workers hired through coarse wage-setting, $\hat{\theta}$. Section \ref{sub:bunching} describes how $\hat{\theta}$ is estimated. Each observation denotes the excess mass at each value taken by a covariate. Thus, the sample size varies by covariate. For log CPI, $N = 1,980$. For firm size and hiring experience, $N = 100$. 
+			
+			In columns 3--4, the dependent variable is a dummy that equals one for workers hired at a round-numbered salary ($\mathbbm{1}\{w_{i} \in R\}$). In addition to the variables listed in the table, the regressions control for worker gender, worker race, worker occupation, worker education, worker potential experience, firm fixed effects, year fixed effects, and metropolitan region fixed effects. I normalize variables by their standard deviation so that the coefficients of the regressions can be interpreted as the linear correlation coefficients. The sample size is $N = 3,988,606$ in column 3 and $N = 1,493,286$ in column 4.
+			
+			Heteroskedasticity-robust standard errors clustered at the firm level in parentheses. $^{***}$, $^{**}$ and $^*$ denote significance at the 1\%, 5\% and 10\% levels.		
+			
+		\end{singlespace} 	
+	}
+\end{table}
+
+
+
+
